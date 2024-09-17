@@ -1,7 +1,7 @@
 'use client'
 import { Link, HomeIcon, CalendarIcon, LogOutIcon, LogInIcon } from "lucide-react"
 import { Button } from "./ui/button"
-import { SheetContent, SheetHeader, SheetTitle, SheetClose } from "./ui/sheet"
+import { SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Image from "next/image"
@@ -55,24 +55,27 @@ export function Sidebar() {
         )}
       </div>
       <div className="flex flex-col gap-2 border-b border-solid py-5">
-        <SheetClose asChild>
-          <Button className="justify-start gap-2" variant="ghost" asChild>
-            <Link href="/">
-              <HomeIcon size={18} />
-              Inicio
-            </Link>
-          </Button>
-        </SheetClose>
+        {/* <SheetClose asChild> */}
+        <Button className="justify-start gap-2" variant="ghost">
+          <Link href="/">
+            <HomeIcon size={18} />
+            Inicio
+          </Link>
+        </Button>
+        {/* </SheetClose> */}
         <Button className="justify-start gap-2" variant="ghost">
           <CalendarIcon size={18} />
           Agendamentos
         </Button>
       </div>
       <div className="flex flex-col gap-2 border-b border-solid py-5">
+        {/* <SheetClose asChild> */}
         <Button className="justify-start gap-2" variant="ghost">
+          {/* <Link to={`/barbershops?services=${option.title}`}></Link> */}
           <HomeIcon size={18} />
           Inicio
         </Button>
+        {/* </SheetClose> */}
         <Button className="justify-start gap-2" variant="ghost">
           <CalendarIcon size={18} />
           Agendamentos

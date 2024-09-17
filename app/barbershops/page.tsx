@@ -5,16 +5,31 @@ import { db } from "@/app/_lib/prisma"
 
 interface BarbershopPageProps {
   params: {
-    search?: string
+    title?: string
+    services?: string
   }
 }
-export async function BarbershopPage({ params }: BarbershopPageProps) {
+export default async function BarbershopPage({ params }: BarbershopPageProps) {
   const barbershops = await db.barbershop.findMany({
     where: {
-      name: {
-        contains: params.search,
-        mode: 'insensitive'
-      }
+      OR: [
+        params.title ? {
+          name: {
+            contains: params.title,
+            mode: 'insensitive'
+          }
+        } : {},
+        params.services ? {
+          services: {
+            some: {
+              name: {
+                contains: params.services,
+                mode: 'insensitive'
+              }
+            }
+          }
+        } : {}
+      ]
     }
   })
 
@@ -31,7 +46,7 @@ export async function BarbershopPage({ params }: BarbershopPageProps) {
       <div className="px-5">
 
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Resultados para &quot;{params.search}&quot;
+          Resultados para &quot;{params.title || params.services}&quot;
         </h2>
         <div className="grid grid-cols-2 gap-4">
           {barbershops.map(barbershop => (

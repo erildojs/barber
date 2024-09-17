@@ -27,6 +27,7 @@ export default async function Home() {
 
         <div className="mt-6 flex gap-3 overflow-scroll [&::-webkit-scrollbar]:hidden">
           <Button className="gap-2" variant="secondary">
+            {/* <Link href={`/barbershops?services=${option.title}`}></Link> */}
             <Image src="/cabelo.svg" width={16} height={16} alt="Barba" />
             Cabelo
           </Button>
