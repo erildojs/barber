@@ -1,101 +1,45 @@
-import { PhoneItem } from "@/app/_components/phone-item"
-import { ServiceItem } from "@/app/_components/service-item"
-import { Sidebar } from "@/app/_components/sidebar"
-import { Button } from "@/app/_components/ui/button"
-import { SheetTrigger } from "@/app/_components/ui/sheet"
+import { BarbershopItem } from "@/app/_components/barbershop-item"
+import { Header } from "@/app/_components/header"
+import { Search } from "@/app/_components/search"
 import { db } from "@/app/_lib/prisma"
-import {
-  ChevronLeftIcon,
-  MapPinIcon,
-  MenuIcon,
-  Sheet,
-  StarIcon,
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
 
 interface BarbershopPageProps {
   params: {
-    id: string
+    search?: string
   }
 }
 export async function BarbershopPage({ params }: BarbershopPageProps) {
-  const barbershop = await db.barbershop.findUnique({
+  const barbershops = await db.barbershop.findMany({
     where: {
-      id: params.id,
-    },
-    include: {
-      services: true,
-    },
+      name: {
+        contains: params.search,
+        mode: 'insensitive'
+      }
+    }
   })
 
-  if (!barbershop) {
-    return notFound()
-  }
+  // if (!barbershops) {
+  //   return notFound()
+  // }
 
   return (
     <div>
-      <div className="relative h-[250px] w-full">
-        <Image
-          alt={barbershop?.name}
-          fill
-          src={barbershop?.imageUrl}
-          className="object-cover"
-        />
-        <Button
-          size="icon"
-          className="absolute left-4 top-4"
-          variant="secondary"
-          asChild
-        >
-          <Link href="/">
-            <ChevronLeftIcon />
-          </Link>
-        </Button>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              size="icon"
-              variant="outline"
-              className="absolute right-4 top-4"
-            >
-              <MenuIcon />
-            </Button>
-          </SheetTrigger>
-          <Sidebar />
-        </Sheet>
-        <Sidebar />
+      <Header />
+      <div className="my-6 px-5">
+        <Search />
       </div>
-      <div className="border-b border-solid p-5">
-        <h1 className="mb-3 text-xl font-bold">{barbershop?.name}</h1>
-        <div className="mb-2 flex items-center gap-1">
-          <MapPinIcon className="text-primary" size={18} />
-          <p className="text-sm">{barbershop?.address}</p>
-        </div>
-        <div className="flex items-center gap-1">
-          <StarIcon className="fill-primary text-primary" size={18} />
-          <p className="text-sm">5,0 (499 avaliações)</p>
-        </div>
-      </div>
-      <div className="space-y-2 border-b border-solid p-5">
-        <h2 className="text-sm font-bold uppercase text-gray-400">Sobre nós</h2>
-        <p className="text-justify text-sm">{barbershop?.description}</p>
-      </div>
-      <div className="space-y-3 border-b border-solid p-5">
-        <h2 className="text-sm font-bold uppercase text-gray-400">Serviços</h2>
-        <div className="space-y-3">
-          {barbershop.services.map((service) => (
-            <ServiceItem key={service.id} service={service} />
+      <div className="px-5">
+
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Resultados para &quot;{params.search}&quot;
+        </h2>
+        <div className="grid grid-cols-2 gap-4">
+          {barbershops.map(barbershop => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>
-
-      <div className="space-y-3 p-5">
-        {barbershop.phones.map((phone) => (
-          <PhoneItem phone={phone} key={phone} />
-        ))}
-      </div>
     </div>
+
   )
 }

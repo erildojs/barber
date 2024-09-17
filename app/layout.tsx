@@ -21,20 +21,23 @@ export default function RootLayout({
     <html lang="pt-AO" className="dark">
       <body className={inter.className}>
         <AuthProvider>
-          {children}
-          <Toaster />
-
-          <footer>
-            <Card>
-              <CardContent className="px-5 py-6">
-                <p className="text-sm text-gray-400">
-                  {" "}
-                  2023 Copyright <span className="font-bold">FSW Barber</span>
-                </p>
-              </CardContent>
-            </Card>
-          </footer>
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
+              {children}
+            </div>
+            <footer>
+              <Card>
+                <CardContent className="px-5 py-6">
+                  <p className="text-sm text-gray-400">
+                    {" "}
+                    2023 Copyright <span className="font-bold">FSW Barber</span>
+                  </p>
+                </CardContent>
+              </Card>
+            </footer>
+          </div>
         </AuthProvider>
+        <Toaster />
       </body>
     </html>
   )
