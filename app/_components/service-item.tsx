@@ -20,7 +20,27 @@ interface ServiceItemProps {
   barbershop: Pick<Barbershop, 'name'>//pega apenas um campo
 }
 const TIME_LIST = [
-  ''
+  "08:00",
+  "08:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
 ]
 function getTimeList(bookings: Booking[]) {
   return TIME_LIST.filter(time => {
@@ -153,12 +173,13 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                   </div>
                   {selectedDay && (
                     <div className="gap-3 flex overflow-x-auto p-5 [&::webkit-scrollbar]:hidden border-b border-solid">
-                      {/* {getTimeList(dayBookings).map(time => ())} */}
-                      {/* <Button variant={selectedTime === time ? 'default' : 'outline'}
-                    className="rounded-full"
-                    onClick={() => handleTimeSelect(time)}></Button> */}
-                      <Button variant='outline'
-                        className="rounded-full"></Button>
+                      {getTimeList(dayBookings).map(time => (
+                        <Button key={time} variant={selectedTime === time ? 'default' : 'outline'}
+                          className="rounded-full"
+                          onClick={() => handleTimeSelect(time)}>
+                          {time}
+                        </Button>
+                      ))}
                     </div>
                   )}
                   {selectedTime && selectedDay && (
@@ -199,9 +220,9 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                     </div>
                   )}
                   <SheetFooter className="px-5 mt-5">
-
-                    <Button type="submit" disabled={!selectedTime || !selectedDay} onClick={handleCreateBooking}>Confirmar</Button>
-
+                    <Button type="submit" disabled={!selectedTime || !selectedDay} onClick={handleCreateBooking}>
+                      Confirmar
+                    </Button>
                   </SheetFooter>
                 </SheetContent>
               </Sheet>

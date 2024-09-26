@@ -26,7 +26,6 @@ export function Search() {
     router.push(`/barbershops?title=${data.title}`)
   }
   return (
-
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="flex gap-2">
         <FormField
@@ -35,9 +34,8 @@ export function Search() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input placeholder="Faca sua busca..." {...field} />
+                <Input placeholder="Faça sua busca..." {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
