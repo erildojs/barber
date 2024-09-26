@@ -89,9 +89,8 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
     setSelectedTime(time)
   }
   async function handleCreateBooking() {
-
     try {
-      if (!selectedDay || selectedTime) return
+      if (!selectedDay || !selectedTime) return
       const hour = Number(selectedTime?.split(':')[0])
       const minute = Number(selectedTime?.split(':')[0])
       const newDate = set(selectedDay, {

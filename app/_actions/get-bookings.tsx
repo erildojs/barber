@@ -7,7 +7,7 @@ interface GetBookingProps {
   date: Date
 }
 
-export function getBookings({ date }: GetBookingProps) {
+export async function getBookings({ date }: GetBookingProps) {
   return db.booking.findMany({
     where: {
       date: {
