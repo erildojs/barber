@@ -6,6 +6,7 @@ import { Avatar, AvatarImage } from "./ui/avatar"
 import { signOut, useSession } from "next-auth/react"
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import { SignInDialog } from "./sign-in-dialog"
+import Link from "next/link"
 
 export function Sidebar() {
   const { data } = useSession()
@@ -51,8 +52,10 @@ export function Sidebar() {
           {/* </Link> */}
         </Button>
         <Button className="justify-start gap-2" variant="ghost">
-          <CalendarIcon size={18} />
-          Agendamentos
+          <Link href="/bookings">
+            <CalendarIcon size={18} />
+            Agendamentos
+          </Link>
         </Button>
       </div>
       <div className="flex flex-col gap-2 border-b border-solid py-5">
