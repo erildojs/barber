@@ -5,12 +5,12 @@ import { db } from "./_lib/prisma"
 import Image from "next/image"
 import { BookingItem } from "./_components/booking-item"
 import { Search } from "./_components/search"
-import { useSession } from "next-auth/react"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./_lib/auth"
+import { format } from "date-fns"
+import { pt } from "date-fns/locale"
 
 export default async function Home() {
-  const { data } = useSession()
   const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
   const popularBarbershops = await db.barbershop.findMany({
@@ -38,8 +38,17 @@ export default async function Home() {
     <div>
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold">Óla {data?.user && data?.user?.name}</h2>
-        <p>Terça-feira, 04 de Setembro</p>
+        <h2 className="text-xl font-bold">Óla {session?.user ? session.user.name : 'Bem vindo'}
+        </h2>
+        <p>
+          <span className="capitalize">
+            {format(new Date(), "EEEE, dd", { locale: pt })}
+          </span>
+          <span>&nbsp;de&nbsp;</span>
+          <span className="capitalize">
+            {format(new Date(), "MMMM", { locale: pt })}
+          </span>
+        </p>
         <div className="mt-6">
           <Search />
         </div>
@@ -54,11 +63,7 @@ export default async function Home() {
             Barba
           </Button>
           <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="Acabamento"
+            <Image src="/acabamento.svg" width={16} height={16} alt="Acabamento"
             />
             Acabamento
           </Button>
@@ -67,21 +72,13 @@ export default async function Home() {
             Massagem
           </Button>
           <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="Acabamento"
+            <Image src="/acabamento.svg" width={16} height={16} alt="Acabamento"
             />
             Acabamento
           </Button>
         </div>
         <div className="relative mt-6 h-[150px] w-full">
-          <Image
-            src="/banner-01.png"
-            fill
-            className="rounded-xl object-cover"
-            alt="Agende nos melhores com FSW Barber"
+          <Image src="/banner-01.png" fill className="rounded-xl object-cover" alt="Agende nos melhores com FSW Barber"
           />
         </div>
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
