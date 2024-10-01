@@ -18,4 +18,5 @@ export async function CreateBooking(params: CreateBookingProps) {
     data: { ...params, userId: (user.user as any).id }
   })
   revalidatePath('/barbershops/[id]')
+  revalidatePath('/bookings')
 }
