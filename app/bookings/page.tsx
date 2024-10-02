@@ -1,15 +1,15 @@
-import { getServerSession } from "next-auth";
 import { Header } from "../_components/header";
-import { authOptions } from "../_lib/auth";
-import { notFound } from "next/navigation";
 import { BookingItem } from "../_components/booking-item";
 import { GetConfirmedBookings } from "../_data/get-confirmed-bookings";
 import { GetConcluedBookings } from "../_data/get-conclued-bookings";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../_lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function Bookings() {
   const session = await getServerSession(authOptions)
   if (!session?.user) {
-    return notFound()
+    return redirect('/')
   }
   const confirmedBookings = await GetConfirmedBookings()
   const concludedBookings = await GetConcluedBookings()
