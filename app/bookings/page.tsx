@@ -3,49 +3,16 @@ import { Header } from "../_components/header";
 import { authOptions } from "../_lib/auth";
 import { notFound } from "next/navigation";
 import { BookingItem } from "../_components/booking-item";
-import { db } from "../_lib/prisma";
+import { GetConfirmedBookings } from "../_data/get-confirmed-bookings";
+import { GetConcluedBookings } from "../_data/get-conclued-bookings";
 
 export default async function Bookings() {
   const session = await getServerSession(authOptions)
   if (!session?.user) {
     return notFound()
   }
-  const confirmedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as any).id,
-      date: {
-        gte: new Date()
-      }
-    },
-    include: {
-      service: {
-        include: {
-          barbershop: true
-        }
-      }
-    },
-    orderBy: {
-      date: "asc"
-    }
-  })
-  const concludedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as any).id,
-      date: {
-        lt: new Date()
-      }
-    },
-    include: {
-      service: {
-        include: {
-          barbershop: true
-        }
-      }
-    },
-    orderBy: {
-      date: "asc"
-    }
-  })
+  const confirmedBookings = await GetConfirmedBookings()
+  const concludedBookings = await GetConcluedBookings()
 
   return (
     <>
