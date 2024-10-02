@@ -45,13 +45,13 @@ export function Sidebar() {
         )}
       </div>
       <div className="flex flex-col gap-2 border-b border-solid py-5">
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost">
           {/* <Link href="/"> */}
           <HomeIcon size={18} />
           Inicio
           {/* </Link> */}
         </Button>
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost" asChild>
           <Link href="/bookings">
             <CalendarIcon size={18} />
             Agendamentos
@@ -60,32 +60,32 @@ export function Sidebar() {
       </div>
       <div className="flex flex-col gap-2 border-b border-solid py-5">
         {/* <SheetClose asChild> */}
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost">
           {/* <Link to={`/barbershops?services=${option.title}`}></Link> */}
           <HomeIcon size={18} />
           Inicio
         </Button>
         {/* </SheetClose> */}
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost">
           <CalendarIcon size={18} />
           Agendamentos
         </Button>
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost">
           <CalendarIcon size={18} />
           Agendamentos
         </Button>
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost">
           <CalendarIcon size={18} />
           Agendamentos
         </Button>
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button className="justify-start px-0 gap-2" variant="ghost">
           <CalendarIcon size={18} />
           Agendamentos
         </Button>
       </div>
       {data?.user && (
         <div className="flex flex-col gap-2 py-5">
-          <Button variant="ghost" className="justify-start gap-2"
+          <Button variant="ghost" className="justify-start px-0 gap-2"
             onClick={handleLogoutClick}>
             <LogOutIcon size={18} />
             Sair da conta
