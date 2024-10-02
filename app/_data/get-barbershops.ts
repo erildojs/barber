@@ -8,7 +8,7 @@ type BarbershopPageProps = {
   }
 }
 
-export function GetBarbershops({ searchParams }: BarbershopPageProps) {
+export async function GetBarbershops({ searchParams }: BarbershopPageProps) {
   return db.barbershop.findMany({
     where: {
       OR: [
