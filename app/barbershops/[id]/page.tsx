@@ -3,7 +3,7 @@ import { ServiceItem } from "@/app/_components/service-item"
 import { Sidebar } from "@/app/_components/sidebar"
 import { Button } from "@/app/_components/ui/button"
 import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
-import { db } from "@/app/_lib/prisma"
+import { GetBarbershop } from "@/app/_data/get-barbershop"
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -16,16 +16,7 @@ interface BarbershopPageProps {
 }
 
 const BarbershopPage = async ({ params }: BarbershopPageProps) => {
-  // chamar o meu banco de dados
-  const barbershop = await db.barbershop.findUnique({
-    where: {
-      id: params.id,
-    },
-    include: {
-      services: true,
-    },
-  })
-
+  const barbershop = await GetBarbershop({ params })
   if (!barbershop) {
     return notFound()
   }

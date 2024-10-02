@@ -10,22 +10,20 @@ import { authOptions } from "./_lib/auth"
 import { format } from "date-fns"
 import { pt } from "date-fns/locale"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
+import { GetPopularBarbershops } from "./_data/get-popular-barbershops"
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
-  const popularBarbershops = await db.barbershop.findMany({
-    orderBy: {
-      name: "desc",
-    },
-  })
+  const popularBarbershops = await GetPopularBarbershops()
   const confirmedBookings = await GetConfirmedBookings()
 
   return (
     <div>
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold">Óla {session?.user ? session.user.name : 'Bem vindo'}
+        <h2 className="text-xl font-bold">
+          Olá {session?.user ? session.user.name : 'Bem vindo'}
         </h2>
         <p>
           <span className="capitalize">

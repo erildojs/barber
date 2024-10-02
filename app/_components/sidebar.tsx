@@ -32,7 +32,7 @@ export function Sidebar() {
           </div>
         ) : (
           <>
-            <h2 className="font-bold">Ola, faca seu login!</h2>
+            <h2 className="font-bold">Olá, faça login!</h2>
             <Dialog>
               <DialogTrigger asChild>
                 <Button size='icon'><LogInIcon /></Button>
@@ -85,7 +85,8 @@ export function Sidebar() {
       </div>
       {data?.user && (
         <div className="flex flex-col gap-2 py-5">
-          <Button variant="ghost" className="justify-start gap-2" onClick={handleLogoutClick}>
+          <Button variant="ghost" className="justify-start gap-2"
+            onClick={handleLogoutClick}>
             <LogOutIcon size={18} />
             Sair da conta
           </Button>

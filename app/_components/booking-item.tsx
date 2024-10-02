@@ -63,9 +63,15 @@ export function BookingItem({ booking }: BookingItemProps) {
               </div>
             </div>
             <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
-              <p className="text-sm capitalize">{format(booking.date, 'MMMM', { locale: pt })}</p>
-              <p className="text-2xl">{format(booking.date, 'dd', { locale: pt })}</p>
-              <p className="text-sm">{format(booking.date, 'HH:mm', { locale: pt })}</p>
+              <p className="text-sm capitalize">
+                {format(booking.date, 'MMMM', { locale: pt })}
+              </p>
+              <p className="text-2xl">
+                {format(booking.date, 'dd', { locale: pt })}
+              </p>
+              <p className="text-sm">
+                {format(booking.date, 'HH:mm', { locale: pt })}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -110,7 +116,9 @@ export function BookingItem({ booking }: BookingItemProps) {
             {isConfirmed && (
               <Dialog>
                 <DialogTrigger className="w-full">
-                  <Button variant="destructive" className="w-full">Cancelar reserva</Button>
+                  <Button variant="destructive" className="w-full">
+                    Cancelar reserva
+                  </Button>
                 </DialogTrigger>
                 <DialogContent className="w-[90%]">
                   <DialogHeader>
@@ -121,10 +129,15 @@ export function BookingItem({ booking }: BookingItemProps) {
                   </DialogHeader>
                   <DialogFooter className="flex flex-row gap-3">
                     <DialogClose asChild>
-                      <Button variant="secondary" className="w-full">Voltar</Button>
+                      <Button variant="secondary" className="w-full">
+                        Voltar
+                      </Button>
                     </DialogClose>
                     <DialogClose className="w-full">
-                      <Button variant="destructive" className="w-full" onClick={handleCancelBookingClick}>Confirmar</Button>
+                      <Button variant="destructive" className="w-full"
+                        onClick={handleCancelBookingClick}>
+                        Confirmar
+                      </Button>
                     </DialogClose>
                   </DialogFooter>
                 </DialogContent>

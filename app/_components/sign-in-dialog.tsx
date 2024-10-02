@@ -12,12 +12,13 @@ export function SignInDialog() {
   return (
     <>
       <DialogHeader>
-        <DialogTitle>Faca login na plataforma</DialogTitle>
+        <DialogTitle>Faça login na plataforma</DialogTitle>
         <DialogDescription>Conecte-se usando sua conta do Google.</DialogDescription>
       </DialogHeader>
-
-      <Button variant='outline' className="gap-1 font-bold" onClick={handleLoginWithGoogleClick}>
-        <Image src='/google.svg' alt="Fazer login com o google" width={18} height={18} />
+      <Button variant='outline' className="gap-1 font-bold"
+        onClick={handleLoginWithGoogleClick}>
+        <Image src='/google.svg' alt="Fazer login com o google" width={18}
+          height={18} />
         Google
       </Button>
     </>

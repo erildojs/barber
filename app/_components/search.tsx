@@ -25,6 +25,7 @@ export function Search() {
   function handleSubmit(data: z.infer<typeof formSchema>) {
     router.push(`/barbershops?title=${data.title}`)
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="flex gap-2">

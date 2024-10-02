@@ -44,12 +44,10 @@ const TIME_LIST = [
   "17:30",
   "18:00",
 ]
-
 interface GetTimeListProps {
   bookings: Booking[]
   selectedDay: Date
 }
-
 function getTimeList({ bookings, selectedDay }: GetTimeListProps) {
   return TIME_LIST.filter(time => {
     const hour = Number(time.split(':')[0])
@@ -158,8 +156,8 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                 }).format(Number(service.price))}
               </p>
               <Sheet open={bookingSheetIsOpen} onOpenChange={handleBookingSheetOpenChange}>
-
-                <Button size="sm" variant="secondary" onClick={handleBookingClick}>
+                <Button size="sm" variant="secondary"
+                  onClick={handleBookingClick}>
                   Reservar
                 </Button>
 
@@ -199,7 +197,8 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                     <div className="gap-3 flex overflow-x-auto p-5 [&::webkit-scrollbar]:hidden border-b border-solid">
                       {timeList.length > 0 ? (
                         timeList.map(time => (
-                          <Button key={time} variant={selectedTime === time ? 'default' : 'outline'}
+                          <Button key={time}
+                            variant={selectedTime === time ? 'default' : 'outline'}
                             className="rounded-full"
                             onClick={() => handleTimeSelect(time)}>
                             {time}
