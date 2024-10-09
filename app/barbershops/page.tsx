@@ -6,7 +6,7 @@ import { GetBarbershops } from "../_data/get-barbershops"
 type BarbershopPageProps = {
   searchParams: {
     title?: string
-    service?: string
+    services?: string
   }
 }
 
@@ -21,7 +21,7 @@ export default async function BarbershopPage({ searchParams, }: BarbershopPagePr
       </div>
       <div className="px-5">
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Resultados para &quot;{searchParams?.title || searchParams?.service}
+          Resultados para &quot;{searchParams?.title || searchParams?.services}
           &quot;
         </h2>
         <div className="grid grid-cols-2 gap-4">

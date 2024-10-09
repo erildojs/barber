@@ -59,10 +59,10 @@ export function Sidebar() {
         </div>
         <div className="flex flex-col gap-2 border-b border-solid py-5">
           <Button className="justify-start px-0 gap-2" variant="ghost">
-            {/* <Link href="/"> */}
-            <HomeIcon size={18} />
-            Inicio
-            {/* </Link> */}
+            <Link href="/" className="flex gap-2">
+              <HomeIcon size={18} />
+              Inicio
+            </Link>
           </Button>
           {data?.user ? (
             <Button className="justify-start px-0 gap-2" variant="ghost" asChild>
@@ -81,29 +81,16 @@ export function Sidebar() {
           )}
         </div>
         <div className="flex flex-col gap-2 border-b border-solid py-5">
-          {/* <SheetClose asChild> */}
-          <Button className="justify-start px-0 gap-2" variant="ghost">
-            {/* <Link to={`/barbershops?services=${option.title}`}></Link> */}
-            <HomeIcon size={18} />
-            Inicio
-          </Button>
-          {/* </SheetClose> */}
-          <Button className="justify-start px-0 gap-2" variant="ghost">
-            <CalendarIcon size={18} />
-            Agendamentos
-          </Button>
-          <Button className="justify-start px-0 gap-2" variant="ghost">
-            <CalendarIcon size={18} />
-            Agendamentos
-          </Button>
-          <Button className="justify-start px-0 gap-2" variant="ghost">
-            <CalendarIcon size={18} />
-            Agendamentos
-          </Button>
-          <Button className="justify-start px-0 gap-2" variant="ghost">
-            <CalendarIcon size={18} />
-            Agendamentos
-          </Button>
+          {/* {services.map(service => (
+            <SheetClose key={service.id} asChild>
+              <Button className="justify-start px-0 gap-2" variant="ghost" asChild>
+                <Link href={`/barbershops?services=${service.name}`}>
+                  <HomeIcon size={18} />
+                  {service.name}
+                </Link>
+              </Button>
+            </SheetClose>
+          ))} */}
         </div>
         {data?.user && (
           <div className="flex flex-col gap-2 py-5">

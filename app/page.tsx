@@ -11,12 +11,15 @@ import { format } from "date-fns"
 import { pt } from "date-fns/locale"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
 import { GetPopularBarbershops } from "./_data/get-popular-barbershops"
+import { GetBarberservice } from "./_actions/get-barberservice"
+import Link from "next/link"
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
   const popularBarbershops = await GetPopularBarbershops()
   const confirmedBookings = await GetConfirmedBookings()
+  const barberservices = await GetBarberservice()
 
   return (
     <div>
@@ -37,30 +40,20 @@ export default async function Home() {
         <div className="mt-6">
           <Search />
         </div>
-        <div className="mt-6 flex gap-3 overflow-scroll [&::-webkit-scrollbar]:hidden">
-          <Button className="gap-2" variant="secondary">
-            {/* <Link href={`/barbershops?services=${option.title}`}></Link> */}
-            <Image src="/cabelo.svg" width={16} height={16} alt="Barba" />
-            Cabelo
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Image src="/barba.svg" width={16} height={16} alt="Cabelo" />
-            Barba
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Image src="/acabamento.svg" width={16} height={16} alt="Acabamento"
-            />
-            Acabamento
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Image src="/massagem.svg" width={16} height={16} alt="Massagem" />
-            Massagem
-          </Button>
-          <Button className="gap-2" variant="secondary">
-            <Image src="/acabamento.svg" width={16} height={16} alt="Acabamento"
-            />
-            Acabamento
-          </Button>
+        <div
+          className="mt-6 flex gap-3 overflow-scroll [&::-webkit-scrollbar]:hidden"
+        >
+          {barberservices.map(service => (
+            <Button key={service.id}
+              className="gap-2"
+              variant="secondary"
+            >
+              <Link href={`/barbershops?services=${service.name}`} className="flex">
+                <Image src={service.imageUrl} width={20} height={20} alt={service.name} className="rounded-[8px] pr-1" />
+                {service.name}
+              </Link>
+            </Button>
+          ))}
         </div>
         <div className="relative mt-6 h-[150px] w-full">
           <Image src="/banner-01.png" fill className="rounded-xl object-cover" alt="Agende nos melhores com FSW Barber"

@@ -4,7 +4,7 @@ import { db } from "../_lib/prisma"
 type BarbershopPageProps = {
   searchParams: {
     title?: string
-    service?: string
+    services?: string
   }
 }
 
@@ -20,12 +20,12 @@ export async function GetBarbershops({ searchParams }: BarbershopPageProps) {
             },
           }
           : {},
-        searchParams.service
+        searchParams.services
           ? {
             services: {
               some: {
                 name: {
-                  contains: searchParams.service,
+                  contains: searchParams.services,
                   mode: "insensitive",
                 },
               },
