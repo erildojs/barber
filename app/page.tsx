@@ -11,22 +11,21 @@ import { format } from "date-fns"
 import { pt } from "date-fns/locale"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
 import { GetPopularBarbershops } from "./_data/get-popular-barbershops"
-import { GetBarberservice } from "./_actions/get-barberservice"
 import Link from "next/link"
+import { services } from "./_constants/services"
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
   const popularBarbershops = await GetPopularBarbershops()
   const confirmedBookings = await GetConfirmedBookings()
-  const barberservices = await GetBarberservice()
 
   return (
     <div>
       <Header />
       <div className="p-5">
         <h2 className="text-xl font-bold">
-          Olá {session?.user ? session.user.name : 'Bem vindo'}
+          Olá {session?.user ? session.user.name : "Bem vindo"}
         </h2>
         <p>
           <span className="capitalize">
@@ -40,23 +39,32 @@ export default async function Home() {
         <div className="mt-6">
           <Search />
         </div>
-        <div
-          className="mt-6 flex gap-3 overflow-scroll [&::-webkit-scrollbar]:hidden"
-        >
-          {barberservices.map(service => (
-            <Button key={service.id}
+        <div className="mt-6 flex gap-3 overflow-scroll [&::-webkit-scrollbar]:hidden">
+          {services.map((service) => (
+            <Button
               className="gap-2"
               variant="secondary"
+              key={service.title}
+              asChild
             >
-              <Link href={`/barbershops?services=${service.name}`} className="flex">
-                <Image src={service.imageUrl} width={20} height={20} alt={service.name} className="rounded-[8px] pr-1" />
-                {service.name}
+              <Link href={`/barbershops?services=${service.title}`}>
+                <Image
+                  src={service.imageUrl}
+                  width={16}
+                  height={16}
+                  alt={service.title}
+                />
+                {service.title}
               </Link>
             </Button>
           ))}
         </div>
         <div className="relative mt-6 h-[150px] w-full">
-          <Image src="/banner-01.png" fill className="rounded-xl object-cover" alt="Agende nos melhores com FSW Barber"
+          <Image
+            src="/banner-01.png"
+            fill
+            className="rounded-xl object-cover"
+            alt="Agende nos melhores com FSW Barber"
           />
         </div>
         {confirmedBookings.length > 0 && (
@@ -64,9 +72,12 @@ export default async function Home() {
             <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
               Agendamentos
             </h2>
-            <div className="flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden">
-              {confirmedBookings.map(booking => (
-                <BookingItem key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
+            <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+              {confirmedBookings.map((booking) => (
+                <BookingItem
+                  key={booking.id}
+                  booking={JSON.parse(JSON.stringify(booking))}
+                />
               ))}
             </div>
           </>
