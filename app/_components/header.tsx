@@ -14,14 +14,16 @@ export function Header() {
           <Image alt="FSW Barber" src="/Logo.png" height={18} width={120} />
         </Link>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button size="icon" variant="outline">
-              <MenuIcon />
-            </Button>
-          </SheetTrigger>
-          <Sidebar />
-        </Sheet>
+        <div className="sm:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button size="icon" variant="outline">
+                <MenuIcon />
+              </Button>
+            </SheetTrigger>
+            <Sidebar />
+          </Sheet>
+        </div>
       </CardContent>
     </Card>
   )

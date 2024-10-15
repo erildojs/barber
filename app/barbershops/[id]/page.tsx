@@ -15,7 +15,7 @@ interface BarbershopPageProps {
   }
 }
 
-const BarbershopPage = async ({ params }: BarbershopPageProps) => {
+export default async function BarbershopPage({ params }: BarbershopPageProps) {
   const barbershop = await GetBarbershop({ params })
   if (!barbershop) {
     return notFound()
@@ -101,5 +101,3 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
     </div>
   )
 }
-
-export default BarbershopPage
