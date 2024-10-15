@@ -93,16 +93,6 @@ export function Sidebar() {
           )}
         </div>
         <div className="flex flex-col gap-2 border-b border-solid py-5">
-          {/* {services.map(service => (
-            <SheetClose key={service.id} asChild>
-              <Button className="justify-start px-0 gap-2" variant="ghost" asChild>
-                <Link href={`/barbershops?services=${service.name}`}>
-                  <HomeIcon size={18} />
-                  {service.name}
-                </Link>
-              </Button>
-            </SheetClose>
-          ))} */}
           {services.map((service) => (
             <SheetClose key={service.title} asChild>
               <Button
