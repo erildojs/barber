@@ -23,8 +23,9 @@ export default function RootLayout({
         <AuthProvider>
           <div className="flex h-full flex-col">
             <div className="flex-1">{children}</div>
+
             <footer>
-              <Card>
+              <Card className="sm:rounded-none">
                 <CardContent className="px-5 py-6">
                   <p className="text-sm text-gray-400">
                     {" "}
