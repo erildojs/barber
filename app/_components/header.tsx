@@ -9,7 +9,7 @@ import Link from "next/link"
 export function Header() {
   return (
     <Card className="sm:rounded-none">
-      <CardContent className="flex flex-row items-center justify-between p-5">
+      <CardContent className="flex flex-row items-center justify-between p-5 sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl sm:px-0 sm:py-5">
         <Link href="/">
           <Image alt="FSW Barber" src="/Logo.png" height={18} width={120} />
         </Link>

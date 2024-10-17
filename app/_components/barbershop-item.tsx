@@ -26,7 +26,9 @@ export function BarbershopItem({ barbershop }: BarbershopItemProps) {
             variant="secondary"
           >
             <StarIcon size={12} className="fill-primary text-primary" />
-            <p className="text-xs font-semibold">{Number(barbershop.notes)}</p>
+            <p className="text-xs font-semibold">
+              {Number(barbershop.notes)},0
+            </p>
           </Badge>
         </div>
 
