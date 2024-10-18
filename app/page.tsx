@@ -14,11 +14,14 @@ import { GetPopularBarbershops } from "./_data/get-popular-barbershops"
 // import Link from "next/link"
 // import { services } from "./_constants/services"
 import { FiSearch, FiChevronRight } from "react-icons/fi"
+import { BookingItem } from "./_components/booking-item"
+import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
+
 export default async function Home() {
   // const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany()
   const popularBarbershops = await GetPopularBarbershops()
-  // const confirmedBookings = await GetConfirmedBookings()
+  const confirmedBookings = await GetConfirmedBookings()
 
   return (
     <>
@@ -94,6 +97,22 @@ export default async function Home() {
               <FiSearch size={14} />
             </button>
           </div>
+
+          {confirmedBookings && (
+            <>
+              <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+                Agendamentos
+              </h2>
+              <div className="sm:flex sm:gap-3 sm:overflow-x-scroll sm:bg-red-600 sm:[&::-webkit-scrollbar]:hidden">
+                {confirmedBookings.map((booking) => (
+                  <BookingItem
+                    key={booking.id}
+                    booking={JSON.parse(JSON.stringify(booking))}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
         {/** Right */}
         <div className="sm:max-w-[590px] sm:overflow-x-scroll sm:[&::-webkit-scrollbar]:hidden">
@@ -116,23 +135,6 @@ export default async function Home() {
           </button>
         </div>
       </div>
-
-      {/** mobile */}
-      {/* {confirmedBookings.length > 0 && (
-          <>
-          <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Agendamentos
-          </h2>
-          <div className="sm:flex sm:gap-3 sm:overflow-x-scroll sm:[&::-webkit-scrollbar]:hidden">
-          {confirmedBookings.map((booking) => (
-            <BookingItem
-            key={booking.id}
-            booking={JSON.parse(JSON.stringify(booking))}
-            />
-            ))}
-            </div>
-            </>
-            )} */}
 
       <div className="sm:relative sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl">
         <h2 className="mb-3 mt-6 uppercase text-gray-400 sm:text-xl sm:font-bold sm:text-white">
