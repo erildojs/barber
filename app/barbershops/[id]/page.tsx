@@ -1,7 +1,10 @@
+import { Header2 } from "@/app/_components/header2"
 import { PhoneItem } from "@/app/_components/phone-item"
 import { ServiceItem } from "@/app/_components/service-item"
 import { Sidebar } from "@/app/_components/sidebar"
+import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import { Button } from "@/app/_components/ui/button"
+import { Card, CardContent } from "@/app/_components/ui/card"
 import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
 import { GetBarbershop } from "@/app/_data/get-barbershop"
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
@@ -22,14 +25,68 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
   }
 
   return (
-    <div>
+    <>
+      <Header2 />
+      {/** Desktop */}
+      <div className="sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl">
+        <div className="hidden sm:mt-10 sm:flex sm:gap-10">
+          <div className="sm:max-h-[486px] sm:w-full sm:max-w-[758px]">
+            <Image
+              alt={barbershop.name}
+              src={barbershop?.imageUrl}
+              className="object-cover sm:w-full sm:rounded-md"
+              width={758}
+              height={486}
+              sizes="(max-width: 758px)"
+            />
+          </div>
+
+          <div className="hidden sm:flex sm:max-h-[829px] sm:w-full sm:max-w-[386px] sm:rounded-2xl sm:bg-[#1A1B1F] sm:p-5">
+            <div className="">
+              <div className="sm:relative sm:mb-5 sm:flex sm:h-[180px] sm:items-end">
+                <Image
+                  fill
+                  src="/map.png"
+                  className="rounded-xl sm:object-cover"
+                  alt={`Mapa da barbearia ${barbershop.name}`}
+                />
+                <Card className="z-50 mx-5 mb-3 w-full rounded-xl">
+                  <CardContent className="flex items-center gap-3 px-5 py-3">
+                    <Avatar>
+                      <AvatarImage src={barbershop.imageUrl} />
+                    </Avatar>
+                    <div>
+                      <h3 className="sm:font-bold">{barbershop.name}</h3>
+                      <p className="sm:text-xs">{barbershop.address}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div>
+                <h3 className="sm:text-sm sm:font-bold sm:text-[#838896]">
+                  SOBRE NÓS
+                </h3>
+                <p className="font-normal sm:mb-6 sm:text-sm sm:text-[#838896]">
+                  Bem-vindo à Vintage Barber, onde tradição encontra estilo.
+                  Nossa equipe de mestres barbeiros transforma cortes de cabelo
+                  e barbas em obras de arte. Em um ambiente acolhedor,
+                  promovemos confiança, estilo e uma comunidade unida.
+                </p>
+              </div>
+              <div className="sm:mb-6 sm:w-full sm:border-[1px] sm:border-[#26272B]"></div>
+              <PhoneItem phone="(11) 3459340-35354" />
+            </div>
+          </div>
+        </div>
+      </div>
       {/* IMAGEM */}
-      <div className="relative h-[250px] w-full">
+      <div className="relative h-[250px] w-full sm:hidden">
         <Image
           alt={barbershop.name}
           src={barbershop?.imageUrl}
-          fill
           className="object-cover"
+          fill
+          sizes="(max-width: 390px)"
         />
 
         <Button
@@ -98,6 +155,6 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
           <PhoneItem key={phone} phone={phone} />
         ))}
       </div>
-    </div>
+    </>
   )
 }

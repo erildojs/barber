@@ -1,24 +1,24 @@
 import { Header } from "./_components/header"
-// import { Button } from "./_components/ui/button"
+import { Button } from "./_components/ui/button"
 import { BarbershopItem } from "./_components/barbershop-item"
 import { db } from "./_lib/prisma"
-// import Image from "next/image"
+import Image from "next/image"
 // import { BookingItem } from "./_components/booking-item"
-// import { Search } from "./_components/search"
-// import { getServerSession } from "next-auth"
-// import { authOptions } from "./_lib/auth"
-// import { format } from "date-fns"
-// import { pt } from "date-fns/locale"
+import { Search } from "./_components/search"
+import { getServerSession } from "next-auth"
+import { authOptions } from "./_lib/auth"
+import { format } from "date-fns"
+import { pt } from "date-fns/locale"
 // import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
 import { GetPopularBarbershops } from "./_data/get-popular-barbershops"
-// import Link from "next/link"
-// import { services } from "./_constants/services"
+import Link from "next/link"
+import { services } from "./_constants/services"
 import { FiSearch, FiChevronRight } from "react-icons/fi"
 import { BookingItem } from "./_components/booking-item"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
 
 export default async function Home() {
-  // const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany()
   const popularBarbershops = await GetPopularBarbershops()
   const confirmedBookings = await GetConfirmedBookings()
@@ -26,59 +26,58 @@ export default async function Home() {
   return (
     <>
       <Header />
-      {/* <div className="p-5"> - so no mobile eu acho */}
-      {/** css para telas quase mobile, nao tenho certeza ainda
-       * algumas coisas precisam sair mesmo no mobile
-       */}
-      {/* <h2 className="text-xl font-bold">
+      {/** Mobile*/}
+      <div className="p-5 sm:hidden">
+        <h2 className="text-xl font-bold">
           Olá {session?.user ? session.user.name : "Bem vindo"}
-          </h2>
-          <p>
+        </h2>
+        <p>
           <span className="capitalize">
-          {format(new Date(), "EEEE, dd", { locale: pt })}
+            {format(new Date(), "EEEE, dd", { locale: pt })}
           </span>
           <span>&nbsp;de&nbsp;</span>
           <span className="capitalize">
-          {format(new Date(), "MMMM", { locale: pt })}
+            {format(new Date(), "MMMM", { locale: pt })}
           </span>
-          </p>
-          <div className="mt-6">
+        </p>
+        <div className="mt-6">
           <Search />
-          </div>
-          <div className="mt-6 flex gap-3 overflow-scroll [&::-webkit-scrollbar]:hidden">
+        </div>
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {services.map((service) => (
             <Button
-            className="gap-2"
-            variant="secondary"
-            key={service.title}
-            asChild
+              className="gap-2"
+              variant="secondary"
+              key={service.title}
+              asChild
             >
-            <Link href={`/barbershops?services=${service.title}`}>
-            <Image
-            src={service.imageUrl}
-            width={16}
-            height={16}
-            alt={service.title}
-            />
-            {service.title}
-            </Link>
+              <Link href={`/barbershops?services=${service.title}`}>
+                <Image
+                  src={service.imageUrl}
+                  width={16}
+                  height={16}
+                  alt={service.title}
+                />
+                {service.title}
+              </Link>
             </Button>
-            ))}
-            </div>
-            <div className="relative mt-6 h-[150px] w-full">
-            <Image
+          ))}
+        </div>
+        <div className="relative mt-6 h-[150px] w-full">
+          <Image
             src="/banner-01.png"
             fill
             className="rounded-xl object-cover"
             alt="Agende nos melhores com FSW Barber"
-            />
-            </div> */}
-
+          />
+        </div>
+      </div>
+      {/** Desktop */}
       <section
-        className="sm:relative sm:h-[22rem] sm:w-full sm:bg-cover sm:bg-center sm:bg-no-repeat"
+        className="hidden sm:relative sm:block sm:h-[22rem] sm:w-full sm:bg-cover sm:bg-center sm:bg-no-repeat"
         style={{ backgroundImage: "url('/bg.jpg')", opacity: 0.1 }}
       ></section>
-      <div className="sm:absolute sm:left-[98px] sm:top-[128px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
+      <div className="hidden sm:absolute sm:left-[98px] sm:top-[128px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
         {/** Left */}
         <div className="">
           <h1 className="sm:mb-1 sm:text-2xl sm:font-normal sm:text-white">
@@ -100,10 +99,10 @@ export default async function Home() {
 
           {confirmedBookings && (
             <>
-              <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+              <h2 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
                 Agendamentos
               </h2>
-              <div className="sm:flex sm:gap-3 sm:overflow-x-scroll sm:bg-red-600 sm:[&::-webkit-scrollbar]:hidden">
+              <div className="flex sm:flex sm:gap-3 sm:overflow-x-auto sm:[&::-webkit-scrollbar]:hidden">
                 {confirmedBookings.map((booking) => (
                   <BookingItem
                     key={booking.id}
@@ -136,12 +135,12 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="sm:relative sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl">
+      <div className="p-5 sm:relative sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl sm:p-0">
         <h2 className="mb-3 mt-6 uppercase text-gray-400 sm:text-xl sm:font-bold sm:text-white">
           {/* Recomendados - no mobile */}
           Populares
         </h2>
-        <div className="flex gap-4 overflow-scroll [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
@@ -153,11 +152,11 @@ export default async function Home() {
             <FiChevronRight className="" size={36} color="#FFF" />
           </button>
         </div>
-        <h2 className="mb-3 mt-6 text-sm uppercase text-gray-400 sm:text-xl sm:font-bold sm:text-white">
+        <h2 className="mb-3 mt-6 p-5 text-sm uppercase text-gray-400 sm:p-0 sm:text-xl sm:font-bold sm:text-white">
           {/* Populares - no mobile */}
           Mais Visitados
         </h2>
-        <div className="mb-4 flex gap-4 overflow-scroll [&::-webkit-scrollbar]:hidden">
+        <div className="mb-4 flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
           {popularBarbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}

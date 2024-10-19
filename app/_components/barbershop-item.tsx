@@ -17,9 +17,10 @@ export function BarbershopItem({ barbershop }: BarbershopItemProps) {
         <div className="relative h-[100px] w-full">
           <Image
             alt={barbershop.name}
-            fill
             className="rounded-2xl object-cover"
             src={barbershop.imageUrl}
+            fill
+            sizes="(max-width: 390px)"
           />
           <Badge
             className="absolute left-2 top-2 space-x-1"

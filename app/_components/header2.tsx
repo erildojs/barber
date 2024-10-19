@@ -10,12 +10,13 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import { SignInDialog } from "./sign-in-dialog"
 import { useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
+import { FiSearch } from "react-icons/fi"
 
-export function Header() {
+export function Header2() {
   const { data } = useSession()
 
   return (
-    <Card className="sm:rounded-none">
+    <Card className="hidden sm:flex sm:rounded-none">
       <CardContent className="flex flex-row items-center justify-between p-5 sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl sm:px-0 sm:py-5">
         <Link href="/">
           <Image
@@ -36,6 +37,17 @@ export function Header() {
             </SheetTrigger>
             <Sidebar />
           </Sheet>
+        </div>
+
+        <div className="sm:flex">
+          <input
+            type="text"
+            placeholder="Buscar Barbearias"
+            className="sm:mr-2 sm:h-9 sm:w-[535px] sm:rounded-lg sm:border-none sm:bg-[#26272B] sm:pl-3 sm:text-white sm:outline-none sm:placeholder:text-[#838896]"
+          />
+          <button className="sm:flex sm:h-9 sm:w-10 sm:items-center sm:justify-center sm:rounded-lg sm:bg-[#8162FF]">
+            <FiSearch size={14} />
+          </button>
         </div>
 
         <div className="hidden sm:flex sm:items-center sm:justify-center">

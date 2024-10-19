@@ -21,6 +21,7 @@ export function PhoneItem({ phone }: PhoneItemProps) {
       </div>
       <Button
         variant="outline"
+        className="bg-[#26272B]"
         size="sm"
         onClick={() => handleCopyPhoneClick(phone)}
       >
