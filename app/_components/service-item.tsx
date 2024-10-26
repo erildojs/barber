@@ -145,7 +145,7 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
   return (
     <>
       <Card>
-        <CardContent className="flex items-center gap-3 p-3">
+        <CardContent className="flex items-center gap-3 p-3 sm:max-h-[134px] sm:max-w-[359px]">
           <div className="relative max-h-[110px] min-h-[110px] min-w-[110px] max-w-[110px]">
             <Image
               src={service.imageUrl}

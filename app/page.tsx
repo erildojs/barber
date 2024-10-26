@@ -84,7 +84,13 @@ export default async function Home() {
             Olá, Faça seu login!
           </h1>
           <p className="sm:mb-12 sm:text-sm sm:font-normal sm:text-white">
-            Sexta, 2 de Fevereiro
+            <span className="capitalize">
+              {format(new Date(), "EEEE, dd", { locale: pt })}
+            </span>
+            <span>&nbsp;de&nbsp;</span>
+            <span className="capitalize">
+              {format(new Date(), "MMMM", { locale: pt })}
+            </span>
           </p>
           <div className="sm:flex">
             <input

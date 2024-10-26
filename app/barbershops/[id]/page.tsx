@@ -115,29 +115,32 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
       </div>
 
       {/* TÍTULO */}
-      <div className="border-b border-solid p-5">
-        <h1 className="mb-3 text-xl font-bold">{barbershop.name}</h1>
-        <div className="mb-2 flex items-center gap-2">
+      <div className="border-b border-solid p-5 sm:mx-24 sm:flex sm:w-full sm:max-w-[730px] sm:justify-between sm:px-0">
+        <h1 className="mb-3 text-xl font-bold sm:hidden">{barbershop.name}</h1>
+        <div className="mb-2 flex items-center gap-2 sm:flex sm:gap-0">
+          <h1 className="mb-3 text-xl font-bold">{barbershop.name}</h1>
           <MapPinIcon className="text-primary" size={18} />
           <p className="text-sm">{barbershop?.address}</p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:h-[68px] sm:w-[121px] sm:rounded-md sm:bg-[#1A1B1F]">
           <StarIcon className="fill-primary text-primary" size={18} />
-          <p className="text-sm">5,0 (499 avaliações)</p>
+          <p className="text-sm sm:hidden">5,0 (499 avaliações)</p>
+          <p className="text-sm sm:text-sm">5,0</p>
+          <p className="sm:text-sm">(499 avaliações)</p>
         </div>
       </div>
 
       {/* DESCRIÇÃO */}
-      <div className="space-y-2 border-b border-solid p-5">
+      <div className="space-y-2 border-b border-solid p-5 sm:mx-24 sm:w-full sm:max-w-[730px] sm:px-0">
         <h2 className="text-xs font-bold uppercase text-gray-400">Sobre nós</h2>
         <p className="text-justify text-sm">{barbershop?.description}</p>
       </div>
 
       {/* SERVIÇOS */}
-      <div className="space-y-3 border-b border-solid p-5">
+      <div className="space-y-3 border-b border-solid p-5 sm:mx-24 sm:max-w-[730px] sm:px-0">
         <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
-        <div className="space-y-3">
+        <div className="space-y-3 sm:flex sm:flex-1 sm:flex-shrink-0 sm:basis-1/2 sm:flex-wrap sm:gap-2 sm:space-y-0">
           {barbershop.services.map((service) => (
             <ServiceItem
               key={service.id}
@@ -150,7 +153,7 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
       </div>
 
       {/* CONTATO */}
-      <div className="space-y-3 p-5">
+      <div className="space-y-3 p-5 sm:hidden">
         {barbershop.phones.map((phone) => (
           <PhoneItem key={phone} phone={phone} />
         ))}
