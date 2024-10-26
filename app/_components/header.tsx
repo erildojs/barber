@@ -55,7 +55,7 @@ export function Header() {
               </Avatar>
               <div>
                 <p className="font-bold">{data.user.name}</p>
-                <p className="text-xs">{data.user.email}</p>
+                <p className="text-xs sm:hidden">{data.user.email}</p>
               </div>
             </div>
           ) : (
