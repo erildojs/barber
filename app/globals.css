@@ -45,8 +45,5 @@
   }
   body {
     @apply h-full bg-background text-foreground;
-    /* max-width: 70rem;
-    width: 100%;
-    margin: 0 auto; */
   }
 }
