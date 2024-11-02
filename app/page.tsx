@@ -80,9 +80,9 @@ export default async function Home() {
       <div className="hidden sm:absolute sm:left-[98px] sm:top-[128px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
         {/** Left */}
         <div className="">
-          <h1 className="sm:mb-1 sm:text-2xl sm:font-normal sm:text-white">
-            Olá, Faça seu login!
-          </h1>
+          <h2 className="sm:mb-1 sm:text-2xl sm:font-normal sm:text-white">
+            Olá {session?.user ? session.user.name : "Faça seu login"}
+          </h2>
           <p className="sm:mb-12 sm:text-sm sm:font-normal sm:text-white">
             <span className="capitalize">
               {format(new Date(), "EEEE, dd", { locale: pt })}
@@ -103,7 +103,7 @@ export default async function Home() {
             </button>
           </div>
 
-          {confirmedBookings && (
+          {confirmedBookings ? (
             <>
               <h2 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
                 Agendamentos
@@ -116,6 +116,15 @@ export default async function Home() {
                   />
                 ))}
               </div>
+            </>
+          ) : (
+            <>
+              <h1 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
+                Agendamentos
+              </h1>
+              <p className="text-sm sm:font-bold sm:text-white">
+                Nenhum agendamento confimado no momento
+              </p>
             </>
           )}
         </div>

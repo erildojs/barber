@@ -133,7 +133,7 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
       toast.error("Erro ao fazer a reserva")
     }
   }
-  //com o usememo essa funcao so vai mudar quando o dayBooking e selecte mudar
+  //com o usememo essa funcao so vai mudar quando o dayBooking e selected mudar
   const timeList = useMemo(() => {
     if (!selectedDay) return []
     return getTimeList({
@@ -177,7 +177,6 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                 >
                   Reservar
                 </Button>
-
                 <SheetContent>
                   <SheetHeader>
                     <SheetTitle>Fazer Reserva</SheetTitle>

@@ -2,7 +2,12 @@
 import Image from "next/image"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
-import { MenuIcon, CalendarDays, CircleUserRound } from "lucide-react"
+import {
+  MenuIcon,
+  CalendarDays,
+  CircleUserRound,
+  LogOutIcon,
+} from "lucide-react"
 import { Sheet, SheetTrigger } from "./ui/sheet"
 import { Sidebar } from "./sidebar"
 import Link from "next/link"
@@ -10,6 +15,7 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import { SignInDialog } from "./sign-in-dialog"
 import { useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
+import { SignUpDialog } from "./sign-up-dialog"
 
 export function Header() {
   const { data } = useSession()
@@ -21,29 +27,27 @@ export function Header() {
           <Image
             alt="Barber"
             src="/Logo.png"
-            height={364}
-            width={62}
-            className="h-auto max-h-[62px] w-auto max-w-[364px]"
+            width={120}
+            height={18}
+            className=""
           />
         </Link>
 
-        <div className="sm:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button size="icon" variant="outline">
-                <MenuIcon />
-              </Button>
-            </SheetTrigger>
-            <Sidebar />
-          </Sheet>
-        </div>
+        <Sheet>
+          <SheetTrigger asChild className="sm:hidden">
+            <Button size="icon" variant="outline">
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <Sidebar />
+        </Sheet>
 
         <div className="hidden sm:flex sm:items-center sm:justify-center">
           <div className="flex items-center justify-center">
             <CalendarDays size={16} />
             <Link
               href="/bookings"
-              className="ml-2 text-sm font-bold text-white"
+              className="ml-2 text-sm font-bold text-white sm:mr-6"
             >
               Agendamentos
             </Link>
@@ -54,9 +58,21 @@ export function Header() {
                 <AvatarImage src={data?.user?.image ?? ""} />
               </Avatar>
               <div>
-                <p className="font-bold">{data.user.name}</p>
+                <p className="text-base font-bold text-white">
+                  {data.user.name}
+                </p>
                 <p className="text-xs sm:hidden">{data.user.email}</p>
               </div>
+              <Dialog>
+                <DialogTrigger asChild className="sm:ml-6">
+                  <Button size="icon" variant="destructive">
+                    <LogOutIcon />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-h-[146px] sm:max-w-[318px]">
+                  <SignUpDialog />
+                </DialogContent>
+              </Dialog>
             </div>
           ) : (
             <Dialog>

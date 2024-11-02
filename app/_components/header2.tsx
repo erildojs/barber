@@ -2,7 +2,12 @@
 import Image from "next/image"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
-import { MenuIcon, CalendarDays, CircleUserRound } from "lucide-react"
+import {
+  MenuIcon,
+  CalendarDays,
+  CircleUserRound,
+  LogOutIcon,
+} from "lucide-react"
 import { Sheet, SheetTrigger } from "./ui/sheet"
 import { Sidebar } from "./sidebar"
 import Link from "next/link"
@@ -11,6 +16,7 @@ import { SignInDialog } from "./sign-in-dialog"
 import { useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { FiSearch } from "react-icons/fi"
+import { SignUpDialog } from "./sign-up-dialog"
 
 export function Header2() {
   const { data } = useSession()
@@ -22,9 +28,9 @@ export function Header2() {
           <Image
             alt="Barber"
             src="/Logo.png"
-            height={364}
-            width={62}
-            className="h-auto max-h-[62px] w-auto max-w-[364px]"
+            width={120}
+            height={18}
+            className=""
           />
         </Link>
 
@@ -55,7 +61,7 @@ export function Header2() {
             <CalendarDays size={16} />
             <Link
               href="/bookings"
-              className="ml-2 text-sm font-bold text-white"
+              className="ml-2 text-sm font-bold text-white sm:mr-6"
             >
               Agendamentos
             </Link>
@@ -67,8 +73,18 @@ export function Header2() {
               </Avatar>
               <div>
                 <p className="font-bold">{data.user.name}</p>
-                <p className="text-xs">{data.user.email}</p>
+                <p className="text-xs sm:hidden">{data.user.email}</p>
               </div>
+              <Dialog>
+                <DialogTrigger asChild className="sm:ml-6">
+                  <Button size="icon" variant="destructive">
+                    <LogOutIcon />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-h-[146px] sm:max-w-[318px]">
+                  <SignUpDialog />
+                </DialogContent>
+              </Dialog>
             </div>
           ) : (
             <Dialog>
