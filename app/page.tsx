@@ -77,13 +77,13 @@ export default async function Home() {
         className="hidden sm:relative sm:block sm:h-[22rem] sm:w-full sm:bg-cover sm:bg-center sm:bg-no-repeat"
         style={{ backgroundImage: "url('/bg.jpg')", opacity: 0.1 }}
       ></section>
-      <div className="hidden sm:absolute sm:left-[98px] sm:top-[128px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
+      <div className="hidden sm:absolute sm:left-[98px] sm:top-[118px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
         {/** Left */}
         <div className="">
           <h2 className="sm:mb-1 sm:text-2xl sm:font-normal sm:text-white">
             Olá {session?.user ? session.user.name : "Faça seu login"}
           </h2>
-          <p className="sm:mb-12 sm:text-sm sm:font-normal sm:text-white">
+          <p className="sm:mb-6 sm:text-sm sm:font-normal sm:text-white">
             <span className="capitalize">
               {format(new Date(), "EEEE, dd", { locale: pt })}
             </span>
@@ -123,7 +123,7 @@ export default async function Home() {
                 Agendamentos
               </h1>
               <p className="text-sm sm:font-bold sm:text-white">
-                Nenhum agendamento confimado no momento
+                Nenhum agendamento confirmado no momento
               </p>
             </>
           )}
@@ -151,8 +151,11 @@ export default async function Home() {
       </div>
 
       <div className="p-5 sm:relative sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl sm:p-0">
-        <h2 className="mb-3 mt-6 uppercase text-gray-400 sm:text-xl sm:font-bold sm:text-white">
-          {/* Recomendados - no mobile */}
+        {/* Recomendados - no mobile */}
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 sm:hidden">
+          Recomendados
+        </h2>
+        <h2 className="hidden sm:mb-3 sm:mt-6 sm:block sm:p-0 sm:text-xl sm:font-bold sm:text-white">
           Populares
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
@@ -167,8 +170,11 @@ export default async function Home() {
             <FiChevronRight className="" size={36} color="#FFF" />
           </button>
         </div>
-        <h2 className="mb-3 mt-6 p-5 text-sm uppercase text-gray-400 sm:p-0 sm:text-xl sm:font-bold sm:text-white">
-          {/* Populares - no mobile */}
+        {/* Populares - no mobile */}
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 sm:hidden">
+          Populares
+        </h2>
+        <h2 className="hidden sm:mb-3 sm:mt-6 sm:block sm:p-0 sm:text-xl sm:font-bold sm:text-white">
           Mais Visitados
         </h2>
         <div className="mb-4 flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">

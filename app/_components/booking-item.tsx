@@ -1,15 +1,32 @@
-'use client'
+"use client"
 import { Prisma } from "@prisma/client"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { Badge } from "./ui/badge"
 import { Card, CardContent } from "./ui/card"
 import { format, isFuture } from "date-fns"
 import { pt } from "date-fns/locale"
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet"
 import Image from "next/image"
 import { PhoneItem } from "./phone-item"
 import { Button } from "./ui/button"
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog"
 import { DeleteBooking } from "../_actions/delete-booking"
 import { toast } from "sonner"
 import { useState } from "react"
@@ -29,29 +46,35 @@ type BookingItemProps = {
 
 export function BookingItem({ booking }: BookingItemProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false)
-  const { service: { barbershop } } = booking
+  const {
+    service: { barbershop },
+  } = booking
   const isConfirmed = isFuture(booking.date)
   async function handleCancelBookingClick() {
     try {
       await DeleteBooking(booking.id)
       setIsSheetOpen(false)
-      toast.success('Reserva cancelada com sucesso!')
+      toast.success("Reserva cancelada com sucesso!")
     } catch (error) {
       console.log(error)
-      toast.error('Erro ao cancelar reserva. Tente novamente!')
+      toast.error("Erro ao cancelar reserva. Tente novamente!")
     }
   }
   function handleSheetOpenChange(isOpen: boolean) {
     setIsSheetOpen(isOpen)
   }
+
   return (
     <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
-      <SheetTrigger className="min-w-[90%]">
+      <SheetTrigger className="min-w-[90%] sm:w-full sm:min-w-[0] sm:max-w-[444px]">
         <Card className="min-w-[90%]">
           <CardContent className="flex justify-between p-0">
             <div className="flex flex-col gap-2 py-5 pl-5">
-              <Badge className="w-fit" variant={isConfirmed ? 'default' : 'secondary'}>
-                {isConfirmed ? 'Confirmado' : 'Finalizado'}
+              <Badge
+                className="w-fit"
+                variant={isConfirmed ? "default" : "secondary"}
+              >
+                {isConfirmed ? "Confirmado" : "Finalizado"}
               </Badge>
               <h3 className="font-semibold">{booking.service.name}</h3>
 
@@ -64,13 +87,13 @@ export function BookingItem({ booking }: BookingItemProps) {
             </div>
             <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
               <p className="text-sm capitalize">
-                {format(booking.date, 'MMMM', { locale: pt })}
+                {format(booking.date, "MMMM", { locale: pt })}
               </p>
               <p className="text-2xl">
-                {format(booking.date, 'dd', { locale: pt })}
+                {format(booking.date, "dd", { locale: pt })}
               </p>
               <p className="text-sm">
-                {format(booking.date, 'HH:mm', { locale: pt })}
+                {format(booking.date, "HH:mm", { locale: pt })}
               </p>
             </div>
           </CardContent>
@@ -80,8 +103,13 @@ export function BookingItem({ booking }: BookingItemProps) {
         <SheetHeader>
           <SheetTitle>Informações da Reserva</SheetTitle>
         </SheetHeader>
-        <div className="relative h-[180px] w-full flex items-end mt-6">
-          <Image fill src="/map.png" className="object-cover rounded-xl" alt={`Mapa da barbearia ${booking.service.barbershop.name}`} />
+        <div className="relative mt-6 flex h-[180px] w-full items-end">
+          <Image
+            fill
+            src="/map.png"
+            className="rounded-xl object-cover"
+            alt={`Mapa da barbearia ${booking.service.barbershop.name}`}
+          />
           <Card className="z-50 mx-5 mb-3 w-full rounded-xl">
             <CardContent className="flex items-center gap-3 px-5 py-3">
               <Avatar>
@@ -95,23 +123,37 @@ export function BookingItem({ booking }: BookingItemProps) {
           </Card>
         </div>
         <div className="mt-6">
-          <Badge className="w-fit" variant={isConfirmed ? 'default' : 'secondary'}>
-            {isConfirmed ? 'Confirmado' : 'Finalizado'}
+          <Badge
+            className="w-fit"
+            variant={isConfirmed ? "default" : "secondary"}
+          >
+            {isConfirmed ? "Confirmado" : "Finalizado"}
           </Badge>
           <div className="mb-3 mt-6">
-            <BookingSummary barbershop={barbershop} service={booking.service} selectedDate={booking.date} />
+            <BookingSummary
+              barbershop={barbershop}
+              service={booking.service}
+              selectedDate={booking.date}
+            />
           </div>
           <div className="space-y-3">
-            {barbershop.phones.map((phone, index) => (//colocar o index nao eh recomendado
-              <PhoneItem key={index} phone={phone} />
-            ))}
+            {barbershop.phones.map(
+              (
+                phone,
+                index, //colocar o index nao eh recomendado
+              ) => (
+                <PhoneItem key={index} phone={phone} />
+              ),
+            )}
           </div>
         </div>
 
         <SheetFooter className="mt-6">
           <div className="flex items-center gap-3">
             <SheetClose asChild>
-              <Button variant="outline" className="w-full">voltar</Button>
+              <Button variant="outline" className="w-full">
+                voltar
+              </Button>
             </SheetClose>
             {isConfirmed && (
               <Dialog>
@@ -124,7 +166,8 @@ export function BookingItem({ booking }: BookingItemProps) {
                   <DialogHeader>
                     <DialogTitle>Você que cancelar sua reserva?</DialogTitle>
                     <DialogDescription>
-                      Tem certeza que deseja fazer o cancelamento? Essa ação é irreversível.
+                      Tem certeza que deseja fazer o cancelamento? Essa ação é
+                      irreversível.
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter className="flex flex-row gap-3">
@@ -134,8 +177,11 @@ export function BookingItem({ booking }: BookingItemProps) {
                       </Button>
                     </DialogClose>
                     <DialogClose className="w-full">
-                      <Button variant="destructive" className="w-full"
-                        onClick={handleCancelBookingClick}>
+                      <Button
+                        variant="destructive"
+                        className="w-full"
+                        onClick={handleCancelBookingClick}
+                      >
                         Confirmar
                       </Button>
                     </DialogClose>

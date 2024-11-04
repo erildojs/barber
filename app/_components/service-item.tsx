@@ -177,11 +177,11 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                 >
                   Reservar
                 </Button>
-                <SheetContent>
+                <SheetContent className="sm:max-w-[330px] sm:overflow-y-auto">
                   <SheetHeader>
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
-                  <div className="border-b border-solid py-5">
+                  <div className="border-b border-solid py-5 sm:w-full sm:max-w-[330px]">
                     <Calendar
                       mode="single"
                       locale={ptBR}
@@ -192,6 +192,7 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                         head_cell: {
                           width: "100%",
                           textTransform: "capitalize",
+                          alignItems: "center",
                         },
                         cell: {
                           width: "100%",
