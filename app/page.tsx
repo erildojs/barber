@@ -73,7 +73,7 @@ export default async function Home() {
       {/** Desktop */}
       <section
         className="hidden sm:relative sm:block sm:h-[22rem] sm:w-full sm:bg-cover sm:bg-center sm:bg-no-repeat"
-        style={{ backgroundImage: "url('/bg.jpg')", opacity: 0.1 }}
+        style={{ backgroundImage: "url('/bg-777.jpg')", opacity: 0.1 }}
       ></section>
       <div className="hidden sm:absolute sm:left-[98px] sm:top-[118px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
         {/** Left */}
