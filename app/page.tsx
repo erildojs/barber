@@ -181,7 +181,7 @@ export default async function Home() {
           ))}
           <button
             type="button"
-            className="sm:absolute sm:right-[-28px] sm:top-[390px] sm:flex sm:h-14 sm:w-14 sm:items-center sm:justify-center sm:rounded-[28px] sm:border-2 sm:border-[#26272B] sm:bg-[#141518]"
+            className="sm:absolute sm:right-[-28px] sm:top-[420px] sm:flex sm:h-14 sm:w-14 sm:items-center sm:justify-center sm:rounded-[28px] sm:border-2 sm:border-[#26272B] sm:bg-[#141518]"
           >
             <FiChevronRight size={36} color="#FFF" />
           </button>
