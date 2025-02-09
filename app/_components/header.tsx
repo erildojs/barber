@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <Card className="sm:rounded-none">
-      <CardContent className="flex flex-row items-center justify-between p-5 sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl sm:px-0 sm:py-5">
+      <CardContent className="flex flex-row items-center justify-between p-5 lg:mx-auto lg:my-0 lg:w-full lg:max-w-6xl lg:px-0 lg:py-5">
         <Link href="/">
           <Image alt="Barber" src="/Logo.png" width={120} height={20} />
         </Link>
