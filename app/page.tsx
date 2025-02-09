@@ -11,9 +11,10 @@ import { pt } from "date-fns/locale"
 import { GetPopularBarbershops } from "./_data/get-popular-barbershops"
 import Link from "next/link"
 import { services } from "./_constants/services"
-import { FiSearch, FiChevronRight } from "react-icons/fi"
+import { FiChevronRight } from "react-icons/fi"
 import { BookingItem } from "./_components/booking-item"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
+import { Search2 } from "./_components/search2"
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -91,14 +92,7 @@ export default async function Home() {
             </span>
           </p>
           <div className="lg:flex">
-            <input
-              type="text"
-              placeholder="Buscar Barbearias"
-              className="lg:mr-2 lg:h-9 lg:w-96 lg:rounded-lg lg:border-none lg:bg-[#26272B] lg:pl-3 lg:text-white lg:outline-none lg:placeholder:text-[#838896]"
-            />
-            <button className="hover:bg-opacity-80 sm:h-9 lg:flex lg:w-10 lg:items-center lg:justify-center lg:rounded-lg lg:bg-[#8162FF]">
-              <FiSearch size={14} />
-            </button>
+            <Search2 />
           </div>
 
           {confirmedBookings ? (
@@ -169,7 +163,7 @@ export default async function Home() {
           </button>
         </div>
         {/* Populares - no mobile */}
-        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 sm:hidden">
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 lg:hidden">
           Populares
         </h2>
         <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
@@ -179,12 +173,14 @@ export default async function Home() {
           {popularBarbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
-          <button
-            type="button"
-            className="lg:absolute lg:right-[-28px] lg:top-[420px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
-          >
-            <FiChevronRight size={36} color="#FFF" />
-          </button>
+          {popularBarbershops.length > 7 && (
+            <button
+              type="button"
+              className="lg:absolute lg:right-[-28px] lg:top-[420px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
+            >
+              <FiChevronRight size={36} color="#FFF" />
+            </button>
+          )}
         </div>
       </div>
     </>
