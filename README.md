@@ -1,8 +1,4 @@
-<h1 align="center">
-	<img alt="Barber" src=".assets/Logo.svg" width="200px" />
-</h1>
-
-<img alt="Mockup" src=".assets/Barber.png">
+<img alt="Mockup" src=".assets/cap.png">
 
 ## 💥 barber
 
@@ -108,7 +104,7 @@ Use _.env.example_ como modelo.
 
 ---
 
-Agora preciasas rodar as migrations do banco de dados.
+Agora precisas rodar as migrations do banco de dados.
 
 ```bash
   # Rodar migrations no prisma
