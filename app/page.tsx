@@ -25,7 +25,7 @@ export default async function Home() {
     <>
       <Header />
       {/** Mobile*/}
-      <div className="p-5 sm:hidden">
+      <div className="p-5 lg:hidden">
         <h2 className="text-xl font-bold">
           Olá {session?.user ? session.user.name : "Bem vindo"}
         </h2>
@@ -72,16 +72,16 @@ export default async function Home() {
       </div>
       {/** Desktop */}
       <section
-        className="hidden sm:relative sm:block sm:h-[22rem] sm:w-full sm:bg-cover sm:bg-center sm:bg-no-repeat"
+        className="hidden lg:relative lg:block lg:h-[22rem] lg:w-full lg:bg-cover lg:bg-center lg:bg-no-repeat"
         style={{ backgroundImage: "url('/bg-777.jpg')", opacity: 0.1 }}
       ></section>
-      <div className="hidden sm:absolute sm:left-[98px] sm:top-[118px] sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
+      <div className="hidden lg:absolute lg:left-[98px] lg:top-[118px] lg:mx-auto lg:my-0 lg:flex lg:w-full lg:max-w-6xl lg:justify-between">
         {/** Left */}
-        <div className="">
-          <h2 className="sm:mb-1 sm:text-2xl sm:font-normal sm:text-white">
+        <div>
+          <h2 className="lg:mb-1 lg:text-2xl lg:font-normal lg:text-white">
             Olá {session?.user ? session.user.name : "Faça seu login"}
           </h2>
-          <p className="sm:mb-6 sm:text-sm sm:font-normal sm:text-white">
+          <p className="lg:mb-6 lg:text-sm lg:font-normal lg:text-white">
             <span className="capitalize">
               {format(new Date(), "EEEE, dd", { locale: pt })}
             </span>
@@ -90,13 +90,13 @@ export default async function Home() {
               {format(new Date(), "MMMM", { locale: pt })}
             </span>
           </p>
-          <div className="sm:flex">
+          <div className="lg:flex">
             <input
               type="text"
               placeholder="Buscar Barbearias"
-              className="sm:mr-2 sm:h-9 sm:w-96 sm:rounded-lg sm:border-none sm:bg-[#26272B] sm:pl-3 sm:text-white sm:outline-none sm:placeholder:text-[#838896]"
+              className="lg:mr-2 lg:h-9 lg:w-96 lg:rounded-lg lg:border-none lg:bg-[#26272B] lg:pl-3 lg:text-white lg:outline-none lg:placeholder:text-[#838896]"
             />
-            <button className="sm:flex sm:h-9 sm:w-10 sm:items-center sm:justify-center sm:rounded-lg sm:bg-[#8162FF]">
+            <button className="hover:bg-opacity-80 sm:h-9 lg:flex lg:w-10 lg:items-center lg:justify-center lg:rounded-lg lg:bg-[#8162FF]">
               <FiSearch size={14} />
             </button>
           </div>
@@ -106,7 +106,7 @@ export default async function Home() {
               <h2 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
                 Agendamentos
               </h2>
-              <div className="flex sm:flex sm:gap-3 sm:overflow-x-auto sm:[&::-webkit-scrollbar]:hidden">
+              <div className="flex lg:flex lg:gap-3 lg:overflow-x-auto lg:[&::-webkit-scrollbar]:hidden">
                 {confirmedBookings.map((booking) => (
                   <BookingItem
                     key={booking.id}
@@ -120,18 +120,18 @@ export default async function Home() {
               <h1 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
                 Agendamentos
               </h1>
-              <p className="text-sm sm:font-bold sm:text-white">
+              <p className="text-sm lg:font-bold lg:text-white">
                 Nenhum agendamento confirmado no momento
               </p>
             </>
           )}
         </div>
         {/** Right */}
-        <div className="sm:max-w-[590px] sm:overflow-x-scroll sm:[&::-webkit-scrollbar]:hidden">
-          <h1 className="sm:mb-5 sm:text-sm sm:font-bold sm:text-[#838896]">
+        <div className="lg:max-w-[590px] lg:overflow-x-scroll lg:[&::-webkit-scrollbar]:hidden">
+          <h1 className="lg:mb-5 lg:text-sm lg:font-bold lg:text-[#838896]">
             Recomendados
           </h1>
-          <div className="sm:flex sm:gap-3">
+          <div className="lg:flex lg:gap-3">
             {barbershops.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
@@ -141,19 +141,19 @@ export default async function Home() {
 
           <button
             type="button"
-            className="sm:absolute sm:right-[-28px] sm:top-[100px] sm:flex sm:h-14 sm:w-14 sm:items-center sm:justify-center sm:rounded-[28px] sm:bg-[#141518]"
+            className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
           >
             <FiChevronRight size={36} color="#FFF" />
           </button>
         </div>
       </div>
 
-      <div className="p-5 sm:relative sm:mx-auto sm:my-0 sm:w-full sm:max-w-6xl sm:p-0">
+      <div className="p-5 lg:relative lg:mx-auto lg:my-0 lg:w-full lg:max-w-6xl lg:p-0">
         {/* Recomendados - no mobile */}
-        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 sm:hidden">
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 lg:hidden">
           Recomendados
         </h2>
-        <h2 className="hidden sm:mb-3 sm:mt-6 sm:block sm:p-0 sm:text-xl sm:font-bold sm:text-white">
+        <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
           Populares
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
@@ -163,7 +163,7 @@ export default async function Home() {
 
           <button
             type="button"
-            className="sm:absolute sm:right-[-28px] sm:top-[100px] sm:flex sm:h-14 sm:w-14 sm:items-center sm:justify-center sm:rounded-[28px] sm:border-2 sm:border-[#26272B] sm:bg-[#141518]"
+            className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
           >
             <FiChevronRight className="" size={36} color="#FFF" />
           </button>
@@ -172,7 +172,7 @@ export default async function Home() {
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 sm:hidden">
           Populares
         </h2>
-        <h2 className="hidden sm:mb-3 sm:mt-6 sm:block sm:p-0 sm:text-xl sm:font-bold sm:text-white">
+        <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
           Mais Visitados
         </h2>
         <div className="mb-4 flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
@@ -181,7 +181,7 @@ export default async function Home() {
           ))}
           <button
             type="button"
-            className="sm:absolute sm:right-[-28px] sm:top-[420px] sm:flex sm:h-14 sm:w-14 sm:items-center sm:justify-center sm:rounded-[28px] sm:border-2 sm:border-[#26272B] sm:bg-[#141518]"
+            className="lg:absolute lg:right-[-28px] lg:top-[420px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
           >
             <FiChevronRight size={36} color="#FFF" />
           </button>
