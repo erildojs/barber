@@ -21,7 +21,6 @@ export function Search2() {
       title: "",
     },
   })
-
   function handleSubmit(data: z.infer<typeof formSchema>) {
     router.push(`/barbershops?title=${data.title}`)
   }

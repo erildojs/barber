@@ -15,6 +15,12 @@ import { FiChevronRight } from "react-icons/fi"
 import { BookingItem } from "./_components/booking-item"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
 import { Search2 } from "./_components/search2"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+} from "./_components/ui/carousel"
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -114,31 +120,49 @@ export default async function Home() {
               <h1 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
                 Agendamentos
               </h1>
-              <p className="text-sm lg:font-bold lg:text-white">
+              <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
                 Nenhum agendamento confirmado no momento
               </p>
             </>
           )}
         </div>
         {/** Right */}
-        <div className="lg:max-w-[590px] lg:overflow-x-scroll lg:[&::-webkit-scrollbar]:hidden">
+        <div className="lg:max-w-[590px]">
           <h1 className="lg:mb-5 lg:text-sm lg:font-bold lg:text-[#838896]">
             Recomendados
           </h1>
-          <div className="lg:flex lg:gap-3">
+          {/**
+           * <div className="lg:flex lg:gap-3 lg:overflow-x-scroll lg:[&::-webkit-scrollbar]:hidden">
             {barbershops.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
           </div>
-
+           */}
+          <Carousel className="lg:flex lg:gap-3">
+            <CarouselContent>
+              {barbershops.map((barbershop) => (
+                <CarouselItem
+                  key={barbershop.id}
+                  className="md:basis-1/2 lg:basis-1/3"
+                >
+                  <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext
+              type="button"
+              className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
+            />
+          </Carousel>
           {/** button de fazer scroll */}
-
-          <button
+          {/** <button
             type="button"
             className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
           >
             <FiChevronRight size={36} color="#FFF" />
           </button>
+           * 
+           */}
         </div>
       </div>
 
@@ -150,11 +174,11 @@ export default async function Home() {
         <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
           Populares
         </h2>
-        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+        {/**
+         * <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
-
           <button
             type="button"
             className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
@@ -162,6 +186,24 @@ export default async function Home() {
             <FiChevronRight className="" size={36} color="#FFF" />
           </button>
         </div>
+         */}
+        <Carousel className="lg:flex lg:gap-3">
+          <CarouselContent>
+            {barbershops.map((barbershop) => (
+              <CarouselItem
+                key={barbershop.id}
+                className="md:basis-1/2 lg:basis-1/6"
+              >
+                <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselNext
+            type="button"
+            className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
+          />
+        </Carousel>
+
         {/* Populares - no mobile */}
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 lg:hidden">
           Populares
