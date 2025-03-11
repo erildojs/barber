@@ -73,7 +73,7 @@ model Barbershop {
   phones      String[]
   description String
   imageUrl    String
-  notes       Decimal?            @default(0)
+  notes       Float
   createdAt   DateTime            @default(now())
   updatedAt   DateTime            @updatedAt
   services    BarbershopService[]
