@@ -5,7 +5,7 @@ export async function GetPopularBarbershops() {
   return db.barbershop.findMany({
     where: {
       notes: {
-        gt: 4,
+        gt: 3,
       },
     },
     orderBy: {
