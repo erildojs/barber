@@ -208,14 +208,23 @@ export default async function Home() {
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 lg:hidden">
           Populares
         </h2>
+        {/** Mais visitados no desktop */}
         <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
           Mais Visitados
         </h2>
         <div className="mb-4 flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {popularBarbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-          ))}
-          {popularBarbershops.length > 7 && (
+          {popularBarbershops.length === 0 ? (
+            <div className="hidden lg:flex lg:h-[135px] lg:w-full lg:items-center lg:justify-center">
+              <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
+                Nenhum barbershop popular no momento
+              </p>
+            </div>
+          ) : (
+            popularBarbershops.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            ))
+          )}
+          {popularBarbershops.length > 6 && (
             <button
               type="button"
               className="lg:absolute lg:right-[-28px] lg:top-[420px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
