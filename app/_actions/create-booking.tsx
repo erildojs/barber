@@ -11,11 +11,11 @@ type CreateBookingProps = {
 export async function CreateBooking(params: CreateBookingProps) {
   const user = await getServerSession(authOptions)
   if (!user) {
-    throw new Error('Usuario nao autenticado')
+    throw new Error("Usuario não autenticado")
   }
   await db.booking.create({
-    data: { ...params, userId: (user.user as any).id }
+    data: { ...params, userId: (user.user as any).id },
   })
-  revalidatePath('/barbershops/[id]')
-  revalidatePath('/bookings')
+  revalidatePath("/barbershops/[id]")
+  revalidatePath("/bookings")
 }

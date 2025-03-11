@@ -21,8 +21,8 @@ export default async function Bookings() {
   return (
     <>
       <Header />
-      <div className="space-y-3 p-5 sm:mx-auto sm:my-0 sm:flex sm:max-w-[928px]">
-        <div className="sm:w-full">
+      <div className="space-y-3 p-5 lg:mx-auto lg:my-0 lg:flex lg:max-w-[928px]">
+        <div className="lg:w-full">
           <h1 className="text-xl font-bold">Agendamentos</h1>
           {confirmedBookings.length === 0 && concludedBookings.length === 0 && (
             <p className="text-gray-400">Você não tem agendamentos.</p>
@@ -56,13 +56,13 @@ export default async function Bookings() {
         </div>
 
         {/** right - Only Desktop */}
-        <div className="hidden sm:mt-10 sm:flex sm:max-h-[729px] sm:w-full sm:max-w-[386px] sm:rounded-2xl sm:bg-[#1A1B1F] sm:p-5">
-          <div className="sm:space-y-5">
-            <div className="sm:relative sm:mb-5 sm:flex sm:h-[180px] sm:items-end">
+        <div className="hidden lg:mt-10 lg:flex lg:max-h-[729px] lg:w-full lg:max-w-[386px] lg:rounded-2xl lg:bg-[#1A1B1F] lg:p-5">
+          <div className="lg:space-y-5">
+            <div className="lg:relative lg:mb-5 lg:flex lg:h-[180px] lg:items-end">
               <Image
                 fill
                 src="/map.png"
-                className="rounded-xl sm:object-cover"
+                className="rounded-xl lg:object-cover"
                 // alt={`Mapa da barbearia ${booking.service.barbershop.name}`}
                 alt={`Mapa da barbearia`}
               />
@@ -73,28 +73,28 @@ export default async function Bookings() {
                     <AvatarImage src="" />
                   </Avatar>
                   <div>
-                    {/* <h3 className="sm:font-bold">{booking.service.barbershop.name}</h3> */}
-                    <h3 className="sm:font-bold">name</h3>
-                    {/* <p className="sm:text-xs">{booking.service.barbershop.address}</p> */}
-                    <p className="sm:text-xs">address</p>
+                    {/* <h3 className="lg:font-bold">{booking.service.barbershop.name}</h3> */}
+                    <h3 className="lg:font-bold">name</h3>
+                    {/* <p className="lg:text-xs">{booking.service.barbershop.address}</p> */}
+                    <p className="lg:text-xs">address</p>
                   </div>
                 </CardContent>
               </Card>
             </div>
             <div>
-              <h3 className="sm:text-sm sm:font-bold sm:text-[#838896]">
+              <h3 className="lg:text-lg lg:font-bold lg:text-[#838896]">
                 SOBRE NÓS
               </h3>
-              <p className="font-normal sm:mb-6 sm:text-sm sm:text-[#838896]">
+              <p className="font-normal lg:mb-6 lg:text-lg lg:text-[#838896]">
                 description
               </p>
             </div>
-            <div className="sm:w-full sm:border-[1px] sm:border-[#26272B]"></div>
+            <div className="lg:w-full lg:border-[1px] lg:border-[#26272B]"></div>
             {/* {booking.service.barbershop.phones.map((phone) => (
                 <PhoneItem key={phone} phone={phone} />
               ))} */}
             <PhoneItem phone="485208454950487584" />
-            <div className="sm:w-full sm:border-[1px] sm:border-[#26272B]"></div>
+            <div className="lg:w-full lg:border-[1px] lg:border-[#26272B]"></div>
           </div>
         </div>
       </div>

@@ -145,7 +145,7 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
   return (
     <>
       <Card>
-        <CardContent className="flex items-center gap-3 p-3 sm:max-h-[134px] sm:max-w-[359px]">
+        <CardContent className="flex items-center gap-3 p-3 lg:max-h-[134px] lg:max-w-[359px]">
           <div className="relative max-h-[110px] min-h-[110px] min-w-[110px] max-w-[110px]">
             <Image
               src={service.imageUrl}
@@ -177,11 +177,11 @@ export function ServiceItem({ service, barbershop }: ServiceItemProps) {
                 >
                   Reservar
                 </Button>
-                <SheetContent className="sm:max-w-[330px] sm:overflow-y-auto">
+                <SheetContent className="lg:max-w-[330px] lg:overflow-y-auto">
                   <SheetHeader>
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
-                  <div className="border-b border-solid py-5 sm:w-full sm:max-w-[330px]">
+                  <div className="border-b border-solid py-5 lg:w-full lg:max-w-[330px]">
                     <Calendar
                       mode="single"
                       locale={ptBR}

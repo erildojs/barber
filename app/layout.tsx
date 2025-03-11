@@ -25,7 +25,7 @@ export default function RootLayout({
             <div className="flex-1">{children}</div>
 
             <footer>
-              <Card className="sm:rounded-none">
+              <Card className="lg:rounded-none">
                 <CardContent className="px-5 py-6">
                   <p className="text-sm text-gray-400">
                     {" "}

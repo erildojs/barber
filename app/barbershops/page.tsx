@@ -15,7 +15,6 @@ export default async function BarbershopPage({
   searchParams,
 }: BarbershopPageProps) {
   const barbershops = await GetBarbershops({ searchParams })
-
   return (
     <div>
       <div className="lg:hidden">

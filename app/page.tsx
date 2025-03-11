@@ -100,30 +100,22 @@ export default async function Home() {
           <div className="lg:flex">
             <Search2 />
           </div>
-
-          {confirmedBookings ? (
-            <>
-              <h2 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
-                Agendamentos
-              </h2>
-              <div className="flex lg:flex lg:gap-3 lg:overflow-x-auto lg:[&::-webkit-scrollbar]:hidden">
-                {confirmedBookings.map((booking) => (
-                  <BookingItem
-                    key={booking.id}
-                    booking={JSON.parse(JSON.stringify(booking))}
-                  />
-                ))}
-              </div>
-            </>
+          <h2 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
+            Agendamentos
+          </h2>
+          {confirmedBookings.length >= 1 ? (
+            <div className="flex lg:flex lg:gap-3 lg:overflow-x-auto lg:[&::-webkit-scrollbar]:hidden">
+              {confirmedBookings.map((booking) => (
+                <BookingItem
+                  key={booking.id}
+                  booking={JSON.parse(JSON.stringify(booking))}
+                />
+              ))}
+            </div>
           ) : (
-            <>
-              <h1 className="mb-3 mt-6 flex text-xs font-bold uppercase text-gray-400">
-                Agendamentos
-              </h1>
-              <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
-                Nenhum agendamento confirmado no momento
-              </p>
-            </>
+            <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
+              Nenhum agendamento confirmado no momento
+            </p>
           )}
         </div>
         {/** Right */}
@@ -216,7 +208,7 @@ export default async function Home() {
           {popularBarbershops.length === 0 ? (
             <div className="hidden lg:flex lg:h-[135px] lg:w-full lg:items-center lg:justify-center">
               <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
-                Nenhum barbershop popular no momento
+                Nenhum barbershop no momento
               </p>
             </div>
           ) : (

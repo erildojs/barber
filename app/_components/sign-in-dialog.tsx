@@ -9,23 +9,22 @@ export function SignInDialog() {
   async function handleLoginWithGoogleClick() {
     signIn("google")
   }
-
   async function handleLoginWithGitgubClick() {}
 
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="sm:text-center sm:text-base sm:font-bold sm:text-white">
+        <DialogTitle className="lg:text-center lg:text-base lg:font-bold lg:text-white">
           Faça login na plataforma
         </DialogTitle>
-        <DialogDescription className="text-center text-sm font-normal text-[#838896] sm:text-[#838896]">
+        <DialogDescription className="text-center text-sm font-normal text-[#838896] lg:text-[#838896]">
           Conecte-se usando sua conta do Google ou{"\n"} Github.
         </DialogDescription>
       </DialogHeader>
-      <div className="flex items-center justify-center gap-2 sm:flex sm:gap-2">
+      <div className="flex items-center justify-center gap-2 lg:flex lg:gap-2">
         <Button
           variant="outline"
-          className="max-h-9 max-w-[134px] gap-1 font-bold sm:h-9 sm:w-[134px]"
+          className="max-h-9 max-w-[134px] gap-1 font-bold lg:h-9 lg:w-[134px]"
           onClick={handleLoginWithGoogleClick}
         >
           <Image
@@ -38,7 +37,7 @@ export function SignInDialog() {
         </Button>
         <Button
           variant="outline"
-          className="max-h-9 max-w-[134px] gap-1 font-bold sm:h-9 sm:w-[134px]"
+          className="max-h-9 max-w-[134px] gap-1 font-bold lg:h-9 lg:w-[134px]"
           onClick={handleLoginWithGitgubClick}
         >
           <Image

@@ -28,14 +28,14 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
     <>
       {/** Desktop */}
       <Header2 />
-      <div className="sm:mx-auto sm:my-0 sm:flex sm:w-full sm:max-w-6xl sm:justify-between">
+      <div className="lg:mx-auto lg:my-0 lg:flex lg:w-full lg:max-w-6xl lg:justify-between">
         {/** left */}
-        <div className="hidden sm:mt-10 sm:flex sm:max-w-[758px] sm:gap-10">
-          <div className="sm:max-h-[486px] sm:w-full">
+        <div className="hidden lg:mt-10 lg:flex lg:max-w-[758px] lg:gap-10">
+          <div className="lg:max-h-[486px] lg:w-full">
             <Image
               alt={barbershop.name}
               src={barbershop?.imageUrl}
-              className="object-cover sm:rounded-md"
+              className="object-cover lg:rounded-md"
               width={748}
               height={486}
               // sizes="(max-width: 758px)"
@@ -43,13 +43,13 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
           </div>
         </div>
         {/** right */}
-        <div className="hidden sm:mt-10 sm:flex sm:max-h-[829px] sm:w-full sm:max-w-[386px] sm:rounded-2xl sm:bg-[#1A1B1F] sm:p-5">
-          <div className="sm:space-y-5">
-            <div className="sm:relative sm:mb-5 sm:flex sm:h-[180px] sm:items-end">
+        <div className="hidden lg:mt-10 lg:flex lg:max-h-[829px] lg:w-full lg:max-w-[386px] lg:rounded-2xl lg:bg-[#1A1B1F] lg:p-5">
+          <div className="lg:space-y-5">
+            <div className="lg:relative lg:mb-5 lg:flex lg:h-[180px] lg:items-end">
               <Image
                 fill
                 src="/map.png"
-                className="rounded-xl sm:object-cover"
+                className="rounded-xl lg:object-cover"
                 alt={`Mapa da barbearia ${barbershop.name}`}
               />
               <Card className="z-50 mx-5 mb-3 w-full rounded-xl">
@@ -58,31 +58,31 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
                     <AvatarImage src={barbershop.imageUrl} />
                   </Avatar>
                   <div>
-                    <h3 className="sm:font-bold">{barbershop.name}</h3>
-                    <p className="sm:text-xs">{barbershop.address}</p>
+                    <h3 className="lg:font-bold">{barbershop.name}</h3>
+                    <p className="lg:text-xs">{barbershop.address}</p>
                   </div>
                 </CardContent>
               </Card>
             </div>
             <div>
-              <h3 className="sm:text-sm sm:font-bold sm:text-[#838896]">
+              <h3 className="lg:text-lg lg:font-bold lg:text-[#838896]">
                 SOBRE NÓS
               </h3>
-              <p className="font-normal sm:mb-6 sm:text-sm sm:text-[#838896]">
+              <p className="font-normal lg:mb-6 lg:text-lg lg:text-[#838896]">
                 {barbershop.description}
               </p>
             </div>
-            <div className="sm:w-full sm:border-[1px] sm:border-[#26272B]"></div>
+            <div className="lg:w-full lg:border-[1px] lg:border-[#26272B]"></div>
             {barbershop.phones.map((phone) => (
               <PhoneItem key={phone} phone={phone} />
             ))}
-            <div className="sm:w-full sm:border-[1px] sm:border-[#26272B]"></div>
+            <div className="lg:w-full lg:border-[1px] lg:border-[#26272B]"></div>
           </div>
         </div>
       </div>
 
       {/* IMAGEM */}
-      <div className="relative h-[250px] w-full sm:hidden">
+      <div className="relative h-[250px] w-full lg:hidden">
         <Image
           alt={barbershop.name}
           src={barbershop?.imageUrl}
@@ -117,28 +117,28 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
       </div>
 
       {/* TÍTULO */}
-      <div className="border-b border-solid p-5 sm:mx-24 sm:flex sm:w-full sm:max-w-[730px] sm:justify-between sm:px-0">
-        {/* <h1 className="mb-3 text-xl font-bold sm:hidden">{barbershop.name}</h1> */}
-        <div className="mb-2 flex items-center gap-2 sm:flex sm:flex-col sm:gap-0">
+      <div className="border-b border-solid p-5 lg:mx-24 lg:flex lg:w-full lg:max-w-[730px] lg:justify-between lg:px-0">
+        {/* <h1 className="mb-3 text-xl font-bold lg:hidden">{barbershop.name}</h1> */}
+        <div className="mb-2 flex items-center gap-2 lg:flex lg:flex-col lg:gap-0">
           <h1 className="mb-3 text-xl font-bold">{barbershop.name}</h1>
-          <MapPinIcon className="text-primary sm:hidden" size={18} />
-          <p className="text-sm sm:hidden">{barbershop?.address}</p>
-          <div className="hidden sm:flex">
-            <MapPinIcon className="text-primary sm:mr-2" size={18} />
-            <p className="text-sm">{barbershop?.address}</p>
+          <MapPinIcon className="text-primary lg:hidden" size={18} />
+          <p className="text-lg lg:hidden">{barbershop?.address}</p>
+          <div className="hidden lg:flex">
+            <MapPinIcon className="text-primary lg:mr-2" size={18} />
+            <p className="text-lg">{barbershop?.address}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:h-[68px] sm:w-[121px] sm:items-center sm:justify-center sm:rounded-md sm:bg-[#1A1B1F]">
-          <StarIcon className="fill-primary text-primary sm:hidden" size={18} />
-          <p className="text-sm sm:hidden">5,0 (499 avaliações)</p>
-          <div className="sm:text-center">
+        <div className="flex items-center gap-2 lg:h-[68px] lg:w-[121px] lg:items-center lg:justify-center lg:rounded-md lg:bg-[#1A1B1F]">
+          <StarIcon className="fill-primary text-primary lg:hidden" size={18} />
+          <p className="text-lg lg:hidden">5,0 (499 avaliações)</p>
+          <div className="lg:text-center">
             <StarIcon
-              className="hidden sm:mr-2 sm:inline sm:fill-primary sm:text-primary"
+              className="hidden lg:mr-2 lg:inline lg:fill-primary lg:text-primary"
               size={18}
             />
-            <span className="hidden sm:inline-block sm:text-sm">5,0</span>
-            <span className="hidden sm:mx-auto sm:inline-block sm:text-center sm:text-sm">
+            <span className="hidden lg:inline-block lg:text-lg">5,0</span>
+            <span className="hidden lg:mx-auto lg:inline-block lg:text-center lg:text-lg">
               499 avaliações
             </span>
           </div>
@@ -146,15 +146,15 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
       </div>
 
       {/* DESCRIÇÃO */}
-      <div className="space-y-2 border-b border-solid p-5 sm:mx-24 sm:w-full sm:max-w-[730px] sm:px-0">
+      <div className="space-y-2 border-b border-solid p-5 lg:mx-24 lg:w-full lg:max-w-[730px] lg:px-0">
         <h2 className="text-xs font-bold uppercase text-gray-400">Sobre nós</h2>
-        <p className="text-justify text-sm">{barbershop?.description}</p>
+        <p className="text-justify text-lg">{barbershop?.description}</p>
       </div>
 
       {/* SERVIÇOS */}
-      <div className="space-y-3 border-b border-solid p-5 sm:mx-24 sm:max-w-[730px] sm:px-0">
+      <div className="space-y-3 border-b border-solid p-5 lg:mx-24 lg:max-w-[730px] lg:px-0">
         <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
-        <div className="space-y-3 sm:flex sm:flex-1 sm:flex-shrink-0 sm:basis-1/2 sm:flex-wrap sm:gap-2 sm:space-y-0">
+        <div className="space-y-3 lg:flex lg:flex-1 lg:flex-shrink-0 lg:basis-1/2 lg:flex-wrap lg:gap-2 lg:space-y-0">
           {barbershop.services.map((service) => (
             <ServiceItem
               key={service.id}
@@ -166,7 +166,7 @@ export default async function BarbershopPage({ params }: BarbershopPageProps) {
       </div>
 
       {/* CONTATO */}
-      <div className="space-y-3 p-5 sm:hidden">
+      <div className="space-y-3 p-5 lg:hidden">
         {barbershop.phones.map((phone) => (
           <PhoneItem key={phone} phone={phone} />
         ))}

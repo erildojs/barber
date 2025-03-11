@@ -28,7 +28,7 @@ export function Header() {
         </Link>
 
         <Sheet>
-          <SheetTrigger asChild className="sm:hidden">
+          <SheetTrigger asChild className="lg:hidden">
             <Button size="icon" variant="outline">
               <MenuIcon />
             </Button>
@@ -36,12 +36,12 @@ export function Header() {
           <Sidebar />
         </Sheet>
 
-        <div className="hidden sm:flex sm:items-center sm:justify-center">
+        <div className="hidden lg:flex lg:items-center lg:justify-center">
           <div className="flex items-center justify-center">
             <CalendarDays size={16} />
             <Link
               href="/bookings"
-              className="ml-2 text-sm font-bold text-white sm:mr-6"
+              className="ml-2 text-sm font-bold text-white lg:mr-6"
             >
               Agendamentos
             </Link>
@@ -55,15 +55,15 @@ export function Header() {
                 <p className="text-base font-bold text-white">
                   {data.user.name}
                 </p>
-                <p className="text-xs sm:hidden">{data.user.email}</p>
+                <p className="text-xs lg:hidden">{data.user.email}</p>
               </div>
               <Dialog>
-                <DialogTrigger asChild className="sm:ml-6">
+                <DialogTrigger asChild className="lg:ml-6">
                   <Button size="icon" variant="destructive">
                     <LogOutIcon />
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-h-[146px] sm:max-w-[318px]">
+                <DialogContent className="lg:max-h-[146px] lg:max-w-[318px]">
                   <SignUpDialog />
                 </DialogContent>
               </Dialog>
@@ -76,7 +76,7 @@ export function Header() {
                   Perfil
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[90%] rounded-2xl sm:max-h-[166px] sm:max-w-80 sm:rounded-2xl">
+              <DialogContent className="w-[90%] rounded-2xl lg:max-h-[166px] lg:max-w-80 lg:rounded-2xl">
                 <SignInDialog />
               </DialogContent>
             </Dialog>
