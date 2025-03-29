@@ -11,7 +11,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { db } from "./_lib/prisma"
 import { services } from "./_constants/services"
-import { FiChevronRight } from "react-icons/fi"
 import { BookingItem } from "./_components/booking-item"
 import { GetConfirmedBookings } from "./_data/get-confirmed-bookings"
 import { Search2 } from "./_components/search2"
@@ -123,19 +122,12 @@ export default async function Home() {
           <h1 className="lg:mb-5 lg:text-sm lg:font-bold lg:text-[#838896]">
             Recomendados
           </h1>
-          {/**
-           * <div className="lg:flex lg:gap-3 lg:overflow-x-scroll lg:[&::-webkit-scrollbar]:hidden">
-            {barbershops.map((barbershop) => (
-              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-            ))}
-          </div>
-           */}
           <Carousel className="lg:flex lg:gap-3">
             <CarouselContent>
               {barbershops.map((barbershop) => (
                 <CarouselItem
                   key={barbershop.id}
-                  className="md:basis-1/2 lg:basis-1/3"
+                  className="md:basis-1/3 lg:basis-1/3"
                 >
                   <BarbershopItem key={barbershop.id} barbershop={barbershop} />
                 </CarouselItem>
@@ -146,15 +138,6 @@ export default async function Home() {
               className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
             />
           </Carousel>
-          {/** button de fazer scroll */}
-          {/** <button
-            type="button"
-            className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
-          >
-            <FiChevronRight size={36} color="#FFF" />
-          </button>
-           * 
-           */}
         </div>
       </div>
 
@@ -166,19 +149,6 @@ export default async function Home() {
         <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
           Populares
         </h2>
-        {/**
-         * <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-          ))}
-          <button
-            type="button"
-            className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
-          >
-            <FiChevronRight className="" size={36} color="#FFF" />
-          </button>
-        </div>
-         */}
         <Carousel className="lg:flex lg:gap-3">
           <CarouselContent>
             {barbershops.map((barbershop) => (
@@ -195,7 +165,6 @@ export default async function Home() {
             className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
           />
         </Carousel>
-
         {/* Populares - no mobile */}
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400 lg:hidden">
           Populares
@@ -204,27 +173,31 @@ export default async function Home() {
         <h2 className="hidden lg:mb-3 lg:mt-6 lg:block lg:p-0 lg:text-xl lg:font-bold lg:text-white">
           Mais Visitados
         </h2>
-        <div className="mb-4 flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {popularBarbershops.length === 0 ? (
-            <div className="hidden lg:flex lg:h-[135px] lg:w-full lg:items-center lg:justify-center">
-              <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
-                Nenhum barbershop no momento
-              </p>
-            </div>
-          ) : (
-            popularBarbershops.map((barbershop) => (
-              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-            ))
-          )}
+        {popularBarbershops.length === 0 && (
+          <div className="hidden lg:flex lg:h-[135px] lg:w-full lg:items-center lg:justify-center">
+            <p className="text-sm lg:text-sm lg:font-bold lg:text-white">
+              Nenhum barbershop no momento
+            </p>
+          </div>
+        )}
+        <Carousel className="lg:flex lg:gap-3">
+          <CarouselContent>
+            {popularBarbershops.map((barbershop) => (
+              <CarouselItem
+                key={barbershop.id}
+                className="md:basis-1/2 lg:min-w-[167px] lg:basis-1/6"
+              >
+                <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
           {popularBarbershops.length > 6 && (
-            <button
+            <CarouselNext
               type="button"
-              className="lg:absolute lg:right-[-28px] lg:top-[420px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:border-2 lg:border-[#26272B] lg:bg-[#141518]"
-            >
-              <FiChevronRight size={36} color="#FFF" />
-            </button>
+              className="lg:absolute lg:right-[-28px] lg:top-[100px] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[28px] lg:bg-[#141518]"
+            />
           )}
-        </div>
+        </Carousel>
       </div>
     </>
   )

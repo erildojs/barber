@@ -55,7 +55,7 @@ export function Header2() {
             <CalendarDays size={16} />
             <Link
               href="/bookings"
-              className="ml-2 text-lg font-bold text-white lg:mr-6"
+              className="lg:ml-2 lg:mr-6 lg:text-sm lg:font-bold lg:text-white"
             >
               Agendamentos
             </Link>
