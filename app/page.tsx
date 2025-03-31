@@ -123,11 +123,11 @@ export default async function Home() {
             Recomendados
           </h1>
           <Carousel className="lg:flex lg:gap-3">
-            <CarouselContent>
+            <CarouselContent className="cursor-grab">
               {barbershops.map((barbershop) => (
                 <CarouselItem
                   key={barbershop.id}
-                  className="md:basis-1/3 lg:basis-1/3"
+                  className="md:basis-1/2 lg:basis-1/3"
                 >
                   <BarbershopItem key={barbershop.id} barbershop={barbershop} />
                 </CarouselItem>
