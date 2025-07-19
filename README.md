@@ -71,7 +71,7 @@ A aplicação permite gerir usuários, clientes, agendamentos e outras funcional
 
 Clonando repositório
 ```bash
-  git clone https://github.com/erildojs/barber.git
+git clone https://github.com/erildojs/barber.git
 ```
 
 ## 💻 Instruções para rodar a aplicação
@@ -79,27 +79,27 @@ Clonando repositório
 Começaremos entrando na pasta da aplicação
 
 ```bash
-  cd barber
+cd barber
 ```
 
 Baixe as dependências
 ```bash
-  npm i
+npm i
 ```
 
 O projecto utiliza o docker, voce pode rodar o docker online usando o NEONDB ou local
 
 Criando container com instância do postgres
 ```bash
-  docker run --name database -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+docker run --name database -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 ```
 
-Inicializando as instâncias
+Inicializando o banco de dados (obs: database é o nome do seu banco, caso mude, não esqueça de mudar também no comando abaixo)
 ```bash
-  docker start database
+docker start database
 ```
 
-Depois você precisará criar um .env na raiz da aplicação, onde terão todas variaveis de ambiente usada na aplicaçaõ (se vc não souber sobre variaveis de ambiente no nodejs, pesquise um pouco mais.)
+Depois você precisará criar um .env na raiz da aplicação, onde terão todas variaveis de ambiente usada na aplicaçaõ (se vc não souber sobre variaveis de ambiente, pesquise um pouco mais.)
 
 Use _.env.example_ como modelo.
 
