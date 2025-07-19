@@ -1,4 +1,4 @@
-<img alt="Mockup" src=".assets/cap.png">
+<img alt="Mockup" src=".assets/capa.png">
 
 ## 💥 barber
 
