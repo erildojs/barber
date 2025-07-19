@@ -69,7 +69,7 @@ A aplicação permite gerir usuários, clientes, agendamentos e outras funcional
 
 > Inicialmente precisamos clonar o repositório para ter acesso a todas as pastas
 
-# Clonando repositório
+Clonando repositório
 ```bash
   git clone https://github.com/erildojs/barber.git
 ```
