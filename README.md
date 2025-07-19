@@ -76,26 +76,27 @@ Clonando repositório
 
 ## 💻 Instruções para rodar a aplicação
 
-Começaremos entrado na pasta da aplicação
+Começaremos entrando na pasta da aplicação
 
 ```bash
-  # Acessar a pasta do projeto
   cd barber
+```
 
-  # Baixar as dependências
+Baixe as dependências
+```bash
   npm i
-
 ```
 
 O projecto utiliza o docker, voce pode rodar o docker online usando o NEONDB ou local
 
+Criando container com instância do postgres
 ```bash
-  # Criando container com instância do postgres
   docker run --name database -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+```
 
-  # Inicializando as instâncias
+Inicializando as instâncias
+```bash
   docker start database
-
 ```
 
 Depois você precisará criar um .env na raiz da aplicação, onde terão todas variaveis de ambiente usada na aplicaçaõ (se vc não souber sobre variaveis de ambiente no nodejs, pesquise um pouco mais.)
@@ -106,16 +107,14 @@ Use _.env.example_ como modelo.
 
 Agora precisas rodar as migrations do banco de dados.
 
+Rodar migrations no prisma
 ```bash
-  # Rodar migrations no prisma
   npx prisma migrate dev
-
 ```
 
-Agora é so rodar a aplicacao
+Agora é so rodar a aplicação
 
+Rodar a aplicação
 ```bash
-  # Rodar a aplicação
   npm run dev
-
 ```
