@@ -109,12 +109,12 @@ Agora precisas rodar as migrations do banco de dados.
 
 Rodar migrations no prisma
 ```bash
-  npx prisma migrate dev
+npx prisma migrate dev
 ```
 
 Agora é so rodar a aplicação
 
 Rodar a aplicação
 ```bash
-  npm run dev
+npm run dev
 ```
