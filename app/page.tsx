@@ -81,7 +81,7 @@ export default async function Home() {
         className="hidden lg:relative lg:block lg:h-[22rem] lg:w-full lg:bg-cover lg:bg-center lg:bg-no-repeat"
         style={{ backgroundImage: "url('/bg-777.jpg')", opacity: 0.1 }}
       />
-      <div className="hidden lg:absolute lg:left-[168px] lg:top-[118px] lg:mx-auto lg:my-0 lg:flex lg:w-full lg:max-w-6xl lg:justify-between">
+      <div className="hidden lg:absolute lg:left-[56px] lg:top-[118px] lg:mx-auto lg:my-0 lg:flex lg:w-full lg:max-w-6xl lg:justify-between">
         {/** Left */}
         <div>
           <h2 className="lg:mb-1 lg:text-2xl lg:font-normal lg:text-white">
